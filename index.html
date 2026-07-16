@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AMETISTA | Oportunidade de Investimento Estratégico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Manrope:wght@400;500;600&amp;family=Hanken+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdea5",
+                        "surface-container-low": "#1a1c1c",
+                        "on-surface-variant": "#c4c6ce",
+                        "outline": "#8e9198",
+                        "surface-container-lowest": "#0c0f0f",
+                        "surface-variant": "#333535",
+                        "on-secondary": "#412d00",
+                        "on-tertiary-fixed-variant": "#5b4215",
+                        "on-tertiary-container": "#9c7d4a",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-bright": "#38393a",
+                        "surface-tint": "#b1c8e9",
+                        "surface": "#121414",
+                        "on-surface": "#e2e2e2",
+                        "surface-container-highest": "#333535",
+                        "tertiary-container": "#241600",
+                        "primary-container": "#001a33",
+                        "on-tertiary": "#422c02",
+                        "on-primary-fixed-variant": "#324863",
+                        "background": "#121414",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-high": "#282a2b",
+                        "on-secondary-container": "#dab36a",
+                        "outline-variant": "#43474d",
+                        "on-tertiary-fixed": "#281900",
+                        "secondary-container": "#604403",
+                        "secondary": "#e9c176",
+                        "error": "#ffb4ab",
+                        "primary": "#b1c8e9",
+                        "on-background": "#e2e2e2",
+                        "surface-container": "#1e2020",
+                        "on-primary-fixed": "#021c36",
+                        "inverse-primary": "#4a607c",
+                        "primary-fixed-dim": "#b1c8e9",
+                        "tertiary-fixed": "#ffdead",
+                        "tertiary-fixed-dim": "#e6c188",
+                        "on-error": "#690005",
+                        "on-primary-container": "#6d84a2",
+                        "inverse-surface": "#e2e2e2",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2f3131",
+                        "primary-fixed": "#d2e4ff",
+                        "surface-dim": "#121414",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary": "#e6c188",
+                        "on-primary": "#1a324c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-edge": "4rem",
+                        "section-gap": "8rem",
+                        "gutter-grid": "2rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "stats-number": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "stats-number": ["40px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-lg": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .premium-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .gilded-border { border: 1px solid rgba(233, 193, 118, 0.3); }
+        .gilded-border-focus:focus { border-color: #e9c176; outline: none; }
+        .text-glow { text-shadow: 0 0 15px rgba(233, 193, 118, 0.4); }
+        body { background-color: #121414; color: #e2e2e2; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .section-separator { height: 1px; background: linear-gradient(90deg, transparent, rgba(233, 193, 118, 0.2), transparent); }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden selection:bg-secondary selection:text-on-secondary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 premium-blur border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full px-margin-edge py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-secondary tracking-widest uppercase">AMETISTA</div>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase" href="#tese">Oportunidade</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase" href="#infra">Negócios</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps uppercase" href="#tese">Tese</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase" href="#performance">Performance</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase" href="#infra">Infraestrutura</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase" href="#expansao">Expansão</a>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-2 font-label-caps text-label-caps uppercase hover:opacity-80 transition-opacity">Contato</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-screen flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<!-- Emulating the hero image background from description -->
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A majestic twilight shot of a luxury mountain estate in Nova Friburgo, Brazil, featuring a main house with warm interior lighting and a glowing outdoor swimming pool. The surrounding mountains are shrouded in misty blue evening tones. The architectural style is sophisticated, combining rustic and modern elements, reflecting the AMETISTA corporate luxury brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE5pfUdluZqKsSNduvpIRlWUkDTbEAoZEbcjoSrZmjx9kdZhGJrIiBwpkuX-NTBxLQW6OnIMBbAmmbTU0muK-J-Le7WAlZDj6I5m8QPBSaIPPZzI334pVnXQ4O7XuHU0ZYyekNZ3hs-ZFHR11ztXsv37CBMrDbs-SosuQuRnLSlc85YcwaNK3hke_CAxN5uCiiuE9MHys0Z2MbRBhQjK80BiK6IaW_i7JhwjK6oSX5fqPCNCLQu22yInPL6dXb6xiuFUwzPdAdGV5d"/>
+</div>
+<div class="relative z-20 max-w-container-max mx-auto px-margin-edge w-full pt-20">
+<div class="max-w-3xl space-y-8">
+<span class="inline-block py-1 px-4 gilded-border bg-secondary-container/20 text-secondary font-label-caps text-label-caps uppercase">Memorando de Investimento</span>
+<h1 class="font-display-lg text-display-lg text-white leading-tight">
+                    AMETISTA <br/>
+<span class="text-secondary">PARTICIPAÇÕES S.A.</span>
+</h1>
+<div class="space-y-4">
+<p class="font-headline-md text-headline-md text-on-surface-variant font-light italic">Oportunidade de Investimento Estratégico - Complexo de Luxo em Altitude</p>
+<div class="flex items-baseline gap-4">
+<span class="font-stats-number text-stats-number text-secondary">R$ 14,8 Milhões</span>
+<span class="text-on-surface-variant font-body-lg text-body-lg">(-60% sobre Custo de Reposição)</span>
+</div>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="bg-secondary text-on-secondary px-8 py-4 font-label-caps text-label-caps uppercase hover:shadow-[0_0_20px_rgba(233,193,118,0.3)] transition-all">Solicitar Informações</button>
+<button class="border border-secondary text-secondary px-8 py-4 font-label-caps text-label-caps uppercase hover:bg-secondary/10 transition-all">Falar com Responsável</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-margin-edge flex gap-12 text-on-surface-variant font-label-caps text-label-caps">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+                Nova Friburgo, RJ
+            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">height</span>
+                1.250 metros de altitude
+            </div>
+</div>
+</header>
+<!-- Overview Section -->
+<section class="py-section-gap bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-grid items-center">
+<div class="lg:col-span-5 space-y-6 reveal">
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Visão Geral da Holding</h2>
+<h3 class="font-headline-lg text-headline-lg text-white">Excelência Operacional e Ativo Imobiliário Único</h3>
+<p class="text-on-surface-variant text-body-lg">A Ametista Participações S.A. detém um portfólio estratégico composto por duas unidades de negócios consolidadas e complementares, operando em um complexo de altíssimo padrão.</p>
+<div class="grid grid-cols-2 gap-8 pt-6">
+<div>
+<p class="font-stats-number text-stats-number text-secondary">2.500m²</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-2">Área Construída</p>
+</div>
+<div>
+<p class="font-stats-number text-stats-number text-secondary">65.000m²</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-2">Área Total</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 reveal delay-200">
+<div class="gilded-border p-8 bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-white mb-4">Emagre SPA</h4>
+<p class="text-on-surface-variant">Escalabilidade e ocupação permanente com infraestrutura de ponta e equipe especializada.</p>
+</div>
+<div class="gilded-border p-8 bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">theater_comedy</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-white mb-4">Espaço Regenesis</h4>
+<p class="text-on-surface-variant">Centro cultural e acústico com 13 anos de tradição e fluxo de caixa previsível.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Investment Thesis Section -->
+<section class="py-section-gap bg-background overflow-hidden" id="tese">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="text-center mb-16 reveal">
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-4">Tese de Arbitragem</h2>
+<h3 class="font-display-lg text-display-lg text-white">Lucro Imediato na Aquisição</h3>
+</div>
+<div class="relative max-w-4xl mx-auto reveal delay-200">
+<div class="flex flex-col gap-12">
+<!-- Comparison Bar -->
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Preço de Aquisição</span>
+<span class="font-stats-number text-stats-number text-secondary">R$ 14,8M</span>
+</div>
+<div class="h-4 bg-secondary w-[39%] shadow-[0_0_20px_rgba(233,193,118,0.5)]"></div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Custo de Reposição Estimado</span>
+<span class="font-stats-number text-stats-number text-on-surface">&gt; R$ 38M</span>
+</div>
+<div class="h-4 bg-surface-variant w-full"></div>
+</div>
+</div>
+<div class="mt-16 bg-secondary text-on-secondary p-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+<div>
+<p class="font-headline-lg text-headline-lg font-bold">DESCONTO REAL: +60%</p>
+<p class="font-body-lg text-body-lg opacity-90">Lucro patrimonial realizado no ato da assinatura do contrato.</p>
+</div>
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Business Units (Bento Grid) -->
+<section class="py-section-gap bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-grid">
+<!-- Espaço Regenesis -->
+<div class="reveal">
+<div class="relative aspect-video mb-8 overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Xp36Ez4EVZKaJ6bwPAVl8tlygAwFKrp1Wqq7BMcEodoiUBSiaUBN-J8FoS5glJmi8QdWXjfBsqEAROIMrADUu_O70qh5jY-1OrEtOdSAQkLaGGQdpAnCzOwEqaCdX1CwOwyOhitt0bAKdOaQUguGvqTbflotRwE359m6xyJqMAqPBfUpresf-Wv-feMOgkq5mmr6sLjYuiZOF3U73XllYXlk-9t5ZoNeqo8vWcBXgnPLF7Yth3r1hjYODW3wgav4Om_FUvC9pA84"/>
+<div class="absolute top-4 left-4 bg-background/80 premium-blur px-4 py-2 border border-secondary/30 font-label-caps text-label-caps text-secondary">UNIDADE 01</div>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-white mb-4">Espaço Regenesis</h3>
+<p class="text-on-surface-variant mb-6">Referência em acústica e arquitetura orgânica na Serra Fluminense. 13 anos de operação ininterrupta servindo como pólo cultural e corporativo de elite.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Fluxo de Caixa Consolidado</span>
+</li>
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Centro Acústico Newton Matos</span>
+</li>
+</ul>
+</div>
+<!-- Emagre SPA -->
+<div class="reveal delay-200">
+<div class="relative aspect-video mb-8 overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCVJsjb6LwbVJqARPIKxD9pJyekzQFndqgk8sqr7dqK2zn_iNqeWw51JFMQyoj3SQKEWO-fxGZigft46TR6Sfztms_IZIPdDBuhon_EBmtD9X38YpRuv09UZ4VUjFkmWObUeR6g8hu6LopeGj1rppJIOmmD1uohTQ2VNQVgjUZx-acc0Lr21zHUaNKeaPa-p6S3tRM1QvQs_6yNkdFFCzHVJxlQx06ZQo_dFj0cbe56h67d9jf7he-5e6eocSkA7ESkDuSuwQ13ghU"/>
+<div class="absolute top-4 left-4 bg-background/80 premium-blur px-4 py-2 border border-secondary/30 font-label-caps text-label-caps text-secondary">UNIDADE 02</div>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-white mb-4">Emagre SPA</h3>
+<p class="text-on-surface-variant mb-6">Infraestrutura completa para programas de saúde e bem-estar de luxo. Capacidade de ocupação permanente e alto potencial de escalabilidade operacional.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">6 Salas de Tratamento de Alta Tecnologia</span>
+</li>
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Haras e Piscinas Aquecidas</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Performance Section -->
+<section class="py-section-gap bg-background border-y border-outline-variant/20" id="performance">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="flex flex-col lg:flex-row gap-gutter-grid items-center">
+<div class="lg:w-1/3 reveal">
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-4">Performance Financeira</h2>
+<h3 class="font-headline-lg text-headline-lg text-white mb-6">Projeções e Margens</h3>
+<p class="text-on-surface-variant text-body-lg">Estimativa baseada em histórico operacional e otimização de custos de gestão compartilhada.</p>
+</div>
+<div class="lg:w-2/3 w-full reveal delay-200">
+<div class="bg-surface-container-low p-8 gilded-border overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-outline-variant/30">
+<th class="pb-4 font-label-caps text-label-caps text-secondary uppercase">Ano Fiscal</th>
+<th class="pb-4 font-label-caps text-label-caps text-secondary uppercase">Faturamento (R$)</th>
+<th class="pb-4 font-label-caps text-label-caps text-secondary uppercase">Margem Operacional</th>
+<th class="pb-4 font-label-caps text-label-caps text-secondary uppercase">Status</th>
+</tr>
+</thead>
+<tbody class="text-on-surface-variant">
+<tr class="border-b border-outline-variant/10">
+<td class="py-6 font-stats-number text-2xl text-white">2025</td>
+<td class="py-6 font-stats-number text-2xl">4,2 M</td>
+<td class="py-6 font-body-md">38%</td>
+<td class="py-6"><span class="bg-secondary-container/20 text-secondary px-3 py-1 font-label-caps text-[10px] border border-secondary/20">PROJETADO</span></td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="py-6 font-stats-number text-2xl text-white">2026</td>
+<td class="py-6 font-stats-number text-2xl">4,8 M</td>
+<td class="py-6 font-body-md">41%</td>
+<td class="py-6"><span class="bg-secondary-container/20 text-secondary px-3 py-1 font-label-caps text-[10px] border border-secondary/20">PROJETADO</span></td>
+</tr>
+<tr>
+<td class="py-6 font-stats-number text-2xl text-white">2027</td>
+<td class="py-6 font-stats-number text-2xl">5,42 M</td>
+<td class="py-6 font-body-md text-secondary font-bold">43%</td>
+<td class="py-6"><span class="bg-secondary-container/20 text-secondary px-3 py-1 font-label-caps text-[10px] border border-secondary/20">META</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Infrastructure & Engineering -->
+<section class="py-section-gap bg-surface-container-lowest relative" id="infra">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="reveal">
+<img class="w-full h-full object-cover shadow-2xl gilded-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0uuzbCZfEqwrBcZHoso266UbGlM7cY6-x2U654pAIOr9Vh4aIthVboVqvw_HcmKwj2bczmH4p0nuxfyWeERkRaGp5RbLAoe8NYLFOdvZgws_Bic_aI1ZXrDcMvScWI6snprLtoQy8PYjrFTLdSXR8RoRiZPe4iRiTmq_pUKQsg7lgc9w6ZJL45jmjkEu3WmqAWayjA3B3XIS2ElPZg9rTJwukEiml7upj5Asaj-xqxscg5XNq5Hip6DXH1FyVqNFgXFk17x70M00S"/>
+</div>
+<div class="reveal delay-300 space-y-10">
+<div>
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-4">Engenharia de Defesa</h2>
+<h3 class="font-headline-lg text-headline-lg text-white">Autossuficiência Crítica</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">water_drop</span>
+<h4 class="font-label-caps text-label-caps text-white uppercase">Hídrica</h4>
+</div>
+<p class="text-on-surface-variant text-body-md">Poço artesiano profundo com outorga INEA e 140.000 litros de reserva estratégica.</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">solar_power</span>
+<h4 class="font-label-caps text-label-caps text-white uppercase">Energética</h4>
+</div>
+<p class="text-on-surface-variant text-body-md">Usina Solar de 53 KW (136 placas) + Gerador industrial de 75 KVA para backup total.</p>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border-l-4 border-secondary">
+<p class="text-on-surface-variant italic font-body-lg">"Fundações com tubulões de 8 metros de profundidade em rocha firme, garantindo estabilidade vitalícia à estrutura."</p>
+<p class="font-label-caps text-label-caps text-secondary mt-4">— LAUDO TÉCNICO: ARQ. NEWTON MATOS</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Legal Security Section -->
+<section class="py-section-gap bg-background">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-grid">
+<div class="lg:col-span-5 reveal">
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-4">Segurança Jurídica</h2>
+<h3 class="font-headline-lg text-headline-lg text-white mb-8">Estrutura Fundiária Consolidada</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">assignment</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-white uppercase mb-2">09 Escrituras</h4>
+<p class="text-on-surface-variant">05 definitivas e registradas no RGI, 04 de posse pacífica rememorada e averbada.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-white uppercase mb-2">Conformidade Total</h4>
+<p class="text-on-surface-variant">Licença Ambiental válida, Aprovação do Corpo de Bombeiros e baixa densidade construtiva.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">handshake</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-white uppercase mb-2">Transferência Segura</h4>
+<p class="text-on-surface-variant">Operação via cessão de ações da Holding S.A., garantindo continuidade sem interrupção operacional.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 reveal delay-200">
+<div class="bg-white p-4 gilded-border">
+<!-- Technical drawing image placeholder -->
+<img class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500" data-alt="A detailed technical architectural blueprint and property plot plan of the Ametista mountain estate. The drawing shows colored zones for different land usage, property boundaries, and topographical contours. It looks like a formal land registry document with professional engineering stamps and legends in Portuguese." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtYsiABE9u9rBT21XRGOMfKODXz4GzG1Umujt2swnKocXkCYGu3cQ3c7VTRErQKDbFOdellQbinO_Kf-4-ngPf6NYqKsN-I6r-ayQwGn_aZU1drB_7jtkSuw7rnFtKa9UrXLciVqTH7Psxc6QJdzIto-2tJZEQ70Rv3LWLcDKsx15gw-6mSvXLEgDkPu11dsUxm7PJxxand3LBpsP5uuORKEpUfDWdvvI4uq03r9UslWPcQ2bB-7hF6J6K5bvoZnh1YCd4GqJKBPEc"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Expansion Project -->
+<section class="py-section-gap bg-surface-container-lowest" id="expansao">
+<div class="max-w-container-max mx-auto px-margin-edge">
+<div class="flex flex-col md:flex-row gap-16 items-center reveal">
+<div class="md:w-1/2">
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-4">Futuro e Expansão</h2>
+<h3 class="font-display-lg text-display-lg text-white mb-6">Projeto Aprovado: +50 Suítes</h3>
+<p class="text-on-surface-variant text-body-lg mb-8">O complexo já possui viabilidade técnica e projeto arquitetônico para a expansão da capacidade hoteleira, permitindo triplicar o faturamento atual mantendo a exclusividade do ambiente.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-low border border-outline-variant/30">
+<p class="text-secondary font-stats-number text-3xl">3x</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-2">Capacidade de Receita</p>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant/30">
+<p class="text-secondary font-stats-number text-3xl">Zero</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-2">Dívida Bancária</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 grid grid-cols-2 gap-4">
+<div class="aspect-square bg-surface-container-low gilded-border flex items-center justify-center p-4 text-center">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">architecture</span>
+<p class="font-label-caps text-label-caps uppercase">Design Orgânico Preservado</p>
+</div>
+</div>
+<div class="aspect-square bg-surface-container-low gilded-border flex items-center justify-center p-4 text-center mt-8">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">trending_up</span>
+<p class="font-label-caps text-label-caps uppercase">Valorização Imobiliária</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap bg-background">
+<div class="max-w-3xl mx-auto px-margin-edge text-center reveal">
+<h2 class="font-headline-lg text-headline-lg text-white mb-8">Formalizar Interesse</h2>
+<p class="text-on-surface-variant mb-12">As informações contidas neste memorando são estritamente confidenciais. Para acesso ao Data Room e agendamento de visita técnica, por favor, preencha o formulário abaixo.</p>
+<form class="space-y-6 text-left">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Nome Completo</label>
+<input class="w-full bg-surface-container-low border-b border-outline-variant gilded-border-focus py-3 px-4 text-white" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Empresa / Grupo</label>
+<input class="w-full bg-surface-container-low border-b border-outline-variant gilded-border-focus py-3 px-4 text-white" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">E-mail Corporativo</label>
+<input class="w-full bg-surface-container-low border-b border-outline-variant gilded-border-focus py-3 px-4 text-white" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Mensagem Adicional</label>
+<textarea class="w-full bg-surface-container-low border-b border-outline-variant gilded-border-focus py-3 px-4 text-white" rows="4"></textarea>
+</div>
+<div class="flex items-center gap-3 py-4">
+<input class="bg-surface-container-low border-outline-variant text-secondary rounded-sm" id="nda" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="nda">Concordo com os termos de confidencialidade e tratamento de dados.</label>
+</div>
+<button class="w-full bg-secondary text-on-secondary py-5 font-label-caps text-label-caps uppercase font-bold tracking-widest hover:bg-secondary-fixed transition-colors" type="submit">Enviar Solicitação Executiva</button>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="flex flex-col items-center text-center gap-8 px-margin-edge max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest font-bold">AMETISTA</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-secondary transition-all font-label-caps text-label-caps uppercase" href="#">Termos de Uso</a>
+<a class="text-on-surface-variant hover:text-secondary transition-all font-label-caps text-label-caps uppercase" href="#">Política de Privacidade</a>
+<a class="text-on-surface-variant hover:text-secondary transition-all font-label-caps text-label-caps uppercase" href="#">Aviso Legal</a>
+</div>
+<p class="max-w-2xl text-on-surface-variant font-label-caps text-label-caps leading-relaxed opacity-60">
+                © 2024 Ametista Participações S.A. Conteúdo Confidencial. As projeções financeiras são baseadas em estimativas de mercado e não garantem resultados futuros.
+            </p>
+</div>
+</footer>
+<script>
+        // Reveal on scroll animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Initial call
+        reveal();
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
