@@ -100,6 +100,16 @@
     .operation-photo img { height: 100%; object-fit: cover; }
     .operation-body { padding: 38px; display: grid; grid-template-columns: .85fr 1.15fr; gap: 45px; }
     .operation h3 { color: var(--gold-light); font-size: 2.3rem; }
+    .company-note { margin-top: 18px; padding: 14px 16px; border-left: 3px solid var(--gold); background: rgba(211,171,89,.08); color: #e7edf0; }
+    .link-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .button-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 16px; border: 1px solid var(--gold); color: var(--gold-light); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: .2s ease; }
+    .button-link:hover { background: var(--gold); color: #2e220d; }
+    .video-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .video-card { padding: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
+    .video-shell { width: min(100%, 360px); aspect-ratio: 9 / 16; margin: 0 auto; background: #000; overflow: hidden; }
+    .video-shell video { width: 100%; height: 100%; object-fit: cover; }
+    .video-card h3 { margin-top: 20px; color: var(--gold-light); font-size: 1.45rem; }
+    .video-card p { margin-top: 8px; color: var(--muted); }
 
     .finance-table { margin-top: 45px; border: 1px solid var(--line); }
     .finance-row { display: grid; grid-template-columns: .65fr 1fr 1fr .8fr; }
@@ -130,6 +140,23 @@
     .legal-list { margin-top: 30px; display: grid; gap: 22px; }
     .legal-list h3 { color: var(--gold-light); font: 600 1rem/1.2 "DM Sans", sans-serif; text-transform: uppercase; letter-spacing: .08em; }
     .legal-list p { margin-top: 7px; color: var(--muted); }
+    .credential-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .credential { padding: 28px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
+    .credential strong { display: block; color: var(--gold-light); font: 600 2rem/1.05 "Playfair Display", serif; }
+    .credential span { display: block; margin-top: 10px; color: var(--muted); font-size: .84rem; }
+    .document-readers { margin-top: 54px; display: grid; gap: 18px; }
+    .document-reader { border: 1px solid var(--line); background: rgba(255,255,255,.03); }
+    .document-reader summary { cursor: pointer; list-style: none; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--gold-light); font-weight: 700; }
+    .document-reader summary::-webkit-details-marker { display: none; }
+    .document-reader summary::after { content: "+"; font: 400 1.8rem/1 "DM Sans", sans-serif; }
+    .document-reader[open] summary::after { content: "−"; }
+    .document-reader[open] summary { border-bottom: 1px solid var(--line); }
+    .document-reader-body { padding: 18px; }
+    .document-reader iframe { display: block; width: 100%; height: 720px; border: 0; background: #fff; }
+    .document-actions { margin-top: 14px; display: flex; justify-content: flex-end; }
+    .map-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 44px; align-items: center; }
+    .map-wrap { min-height: 480px; border: 1px solid var(--line); overflow: hidden; background: var(--navy-3); }
+    .map-wrap iframe { width: 100%; height: 480px; border: 0; }
 
     .expansion-numbers { margin-top: 35px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .expansion-number { padding: 22px; background: rgba(255,255,255,.04); border: 1px solid var(--line); }
@@ -161,6 +188,7 @@
       .hero-copy { min-height: 670px; padding-left: max(40px, calc((100vw - var(--max)) / 2)); }
       .hero-photo { min-height: 620px; }
       .split, .split-wide { grid-template-columns: 1fr; }
+      .map-grid { grid-template-columns: 1fr; }
       .stat-grid { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: 0; }
       .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -176,7 +204,7 @@
       .nav-link { padding-top: 23px; font-size: .62rem; }
       .hero-copy { min-height: 620px; padding: 70px 24px 55px; }
       .hero-photo { min-height: 500px; }
-      .stat-grid, .card-grid, .engineering-grid, .pillars, .expansion-numbers { grid-template-columns: 1fr; }
+      .stat-grid, .card-grid, .engineering-grid, .pillars, .expansion-numbers, .credential-grid, .video-grid { grid-template-columns: 1fr; }
       .stat { border-right: 0; border-bottom: 1px solid var(--line); }
       .stat:last-child { border-bottom: 0; }
       .arbitrage { grid-template-columns: 1fr; }
@@ -188,6 +216,7 @@
       .margin-callout { align-items: flex-start; flex-direction: column; }
       .gallery { display: grid; grid-template-columns: 1fr; grid-auto-rows: 300px; }
       .gallery figure:nth-child(n) { grid-column: auto; grid-row: auto; }
+      .document-reader iframe { height: 560px; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .footer-social { text-align: left; }
     }
@@ -203,6 +232,7 @@
         <a class="nav-link" href="#tese">Tese</a>
         <a class="nav-link" href="#performance">Performance</a>
         <a class="nav-link" href="#infraestrutura">Infraestrutura</a>
+        <a class="nav-link" href="#laudos">Laudos</a>
         <a class="nav-link" href="#juridico">Segurança jurídica</a>
         <a class="nav-link" href="#expansao">Expansão</a>
       </div>
@@ -231,11 +261,12 @@
         <div class="split split-wide">
           <div class="reveal">
             <div class="eyebrow">O ativo real em altitude</div>
-            <h2 class="section-title">Uma holding. Duas operações sinérgicas.</h2>
-            <p class="section-lead">A Ametista Participações S.A. (CNPJ 04.428.008/0001-04) é a holding proprietária de um complexo de ativos imobiliários e operacionais de alta performance, situado a 1.250 metros de altitude em Nova Friburgo - a “Suíça Brasileira”.</p>
+            <h2 class="section-title">Uma holding. Duas empresas operacionais complementares.</h2>
+            <p class="section-lead">A Ametista Participações S.A. (CNPJ 04.428.008/0001-04) está por trás de todo o ativo: é a holding proprietária do complexo imobiliário e da estrutura que sustenta as operações do Espaço Regenesis e do Emagre SPA, a 1.250 metros de altitude em Nova Friburgo.</p>
             <ul class="check-list">
-              <li><strong>Espaço Regenesis:</strong> centro de eventos com 13 anos de liderança consolidada.</li>
-              <li><strong>Emagre SPA:</strong> empreendimento de saúde e bem-estar com ocupação permanente.</li>
+              <li><strong>Ametista:</strong> propriedade, infraestrutura, expansão e governança patrimonial.</li>
+              <li><strong>Espaço Regenesis:</strong> eventos fechados, retiros, encontros e celebrações, principalmente de sexta a domingo.</li>
+              <li><strong>Emagre SPA:</strong> programas de saúde, emagrecimento e bem-estar de segunda a sexta.</li>
               <li><strong>Modelo híbrido:</strong> reduz sazonalidade e otimiza a rentabilidade do ativo.</li>
             </ul>
           </div>
@@ -249,7 +280,7 @@
           <div class="stat"><strong>1.250 m</strong><span>Altitude estratégica em Nova Friburgo</span></div>
           <div class="stat"><strong>~2.500 m²</strong><span>Área construída informada no dossiê</span></div>
           <div class="stat"><strong>13 anos</strong><span>Operação consolidada do Espaço Regenesis</span></div>
-          <div class="stat"><strong>2 negócios</strong><span>Eventos e saúde/bem-estar no mesmo ativo</span></div>
+          <div class="stat"><strong>3 empresas</strong><span>Ametista, Regenesis e Emagre no mesmo ecossistema</span></div>
         </div>
       </div>
     </section>
@@ -301,7 +332,12 @@
             <div>
               <div class="eyebrow">Estabilidade e liderança</div>
               <h3>Espaço Regenesis</h3>
-              <p class="section-lead">13 anos de operação ininterrupta.</p>
+              <p class="section-lead">13 anos de operação ininterrupta, com foco em grupos fechados e ocupação de fim de semana.</p>
+              <div class="company-note"><strong>Operação:</strong> eventos principalmente de sexta a domingo, combinando hospedagem, alimentação, auditório e lazer em regime de exclusividade.</div>
+              <div class="link-row">
+                <a class="button-link" href="https://retiro.com.br/locais/espaco-regenesis/" target="_blank" rel="noopener">Conhecer o Regenesis</a>
+                <a class="button-link" href="https://www.instagram.com/espacoregenesis/" target="_blank" rel="noopener">Instagram</a>
+              </div>
             </div>
             <ul class="check-list">
               <li>Agenda consolidada, com eventos contratados com até um ano de antecedência.</li>
@@ -310,6 +346,8 @@
               <li>Eventos corporativos, casamentos, retiros e conferências.</li>
               <li>Capacidade para até 120 pessoas, sem restrição de horário.</li>
               <li>Centro acústico profissional de 200 m².</li>
+              <li>38 suítes e capacidade de hospedagem para até 75 pessoas na apresentação comercial atual.</li>
+              <li>Pensão completa, estrutura de lazer e atendimento exclusivo para um grupo por vez.</li>
             </ul>
           </div>
         </article>
@@ -322,7 +360,13 @@
             <div>
               <div class="eyebrow">Escalabilidade e alta rotatividade</div>
               <h3>Emagre SPA</h3>
-              <p class="section-lead">100% de ocupação permanente, conforme apresentado no dossiê.</p>
+              <p class="section-lead">Programas completos de emagrecimento, relaxamento e reeducação de hábitos.</p>
+              <div class="company-note"><strong>Operação:</strong> ciclos de segunda a sexta, com hospedagem, alimentação funcional, tratamentos e atividades guiadas.</div>
+              <div class="link-row">
+                <a class="button-link" href="https://emagre.com/" target="_blank" rel="noopener">Site do Emagre</a>
+                <a class="button-link" href="https://www.instagram.com/emagrespa/" target="_blank" rel="noopener">Instagram</a>
+                <a class="button-link" href="https://www.facebook.com/p/Emagre-SPA-61576883079394/" target="_blank" rel="noopener">Facebook</a>
+              </div>
             </div>
             <ul class="check-list">
               <li>Modelo de preços orientado à maximização de receita e eficiência.</li>
@@ -330,9 +374,37 @@
               <li>SPA europeu completo com seis salas de tratamento.</li>
               <li>Piscina com cascata, cozinha industrial em aço inox e haras.</li>
               <li>Potencial de upselling, terapias inovadoras e programas personalizados.</li>
+              <li>Programas Emagre e Relax, com seis terapias incluídas e acompanhamento especializado.</li>
+              <li>Acomodações privativas e experiências ao ar livre em meio à Mata Atlântica.</li>
             </ul>
           </div>
         </article>
+
+        <div style="margin-top:82px">
+          <div class="eyebrow">Emagre SPA em movimento</div>
+          <h2 class="section-title">Vídeos reais de apresentação da experiência</h2>
+          <p class="section-lead">Os materiais enviados mostram os ambientes, tratamentos, atividades, hospedagem e depoimentos utilizados na divulgação atual do SPA.</p>
+          <div class="video-grid">
+            <article class="video-card reveal">
+              <div class="video-shell">
+                <video controls playsinline preload="metadata" poster="assets/videos/emagre-programa-4-dias.jpg">
+                  <source src="assets/videos/emagre-programa-4-dias.mp4" type="video/mp4">
+                </video>
+              </div>
+              <h3>Programa de quatro dias</h3>
+              <p>Apresentação do pacote, ambientes de tratamento e relatos de participantes.</p>
+            </article>
+            <article class="video-card reveal">
+              <div class="video-shell">
+                <video controls playsinline preload="metadata" poster="assets/videos/emagre-experiencia-completa.jpg">
+                  <source src="assets/videos/emagre-experiencia-completa.mp4" type="video/mp4">
+                </video>
+              </div>
+              <h3>Experiência completa</h3>
+              <p>Atividades na piscina, terapias, convivência, acomodações e vista aérea do complexo.</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -407,6 +479,83 @@
           <article class="card"><h3>Centro acústico</h3><p><strong>200 m²</strong> com isolamento de alta densidade.</p></article>
           <article class="card"><h3>Estrutura de bem-estar</h3><p>Seis salas privativas, piscina com cascata e SPA europeu completo.</p></article>
           <article class="card"><h3>Apoio operacional</h3><p>Cozinha industrial em aço inox, preparada para grandes eventos, além de haras.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="laudos">
+      <div class="container">
+        <div class="eyebrow">Base técnica e mercadológica</div>
+        <h2 class="section-title">Dois pareceres independentes sustentam o ativo</h2>
+        <p class="section-lead">O material atualizado reúne um laudo técnico de arquitetura e engenharia, datado de 7 de dezembro de 2020, e um parecer de avaliação mercadológica, concluído em 3 de março de 2016. As datas e bases de cálculo são mantidas de forma explícita.</p>
+
+        <div class="card-grid">
+          <article class="card reveal">
+            <h3>Laudo técnico</h3>
+            <p>Assinado por <strong>Newton Eduardo Apicelo de Matos</strong>, arquiteto e urbanista, engenheiro de Segurança do Trabalho e perito técnico, CAU nº A31520-6.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Avaliação mercadológica</h3>
+            <p>Elaborada por <strong>Clebson Rogério dos Santos da Cruz</strong>, perito avaliador imobiliário, CRECI/RJ nº 027.835 e CNAI nº 03.306.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Norma e finalidade</h3>
+            <p>O parecer declara atendimento à ABNT NBR 14.653-2 e tem como objetivo determinar o valor de mercado para negociação.</p>
+          </article>
+        </div>
+
+        <div class="credential-grid reveal">
+          <div class="credential"><strong>40.718,28 m²</strong><span>Área total da propriedade informada na avaliação de 2016</span></div>
+          <div class="credential"><strong>2.141,84 m²</strong><span>Área de construção aprovada considerada na avaliação de 2016</span></div>
+          <div class="credential"><strong>US$ 6,675M</strong><span>Valor médio estimado na conclusão do parecer mercadológico</span></div>
+        </div>
+
+        <div class="split" style="margin-top:56px">
+          <div class="reveal">
+            <div class="eyebrow">Conclusões do laudo técnico</div>
+            <ul class="check-list">
+              <li>Não foram identificadas fissuras, rachaduras, aço exposto ou patologias aparentes no concreto.</li>
+              <li>Contenção apoiada em tubulões de 8 metros de profundidade e 1 metro de diâmetro ao longo de aproximadamente 150 metros.</li>
+              <li>Poço artesiano com mais de 60 metros e cisternas com capacidade total de 140.000 litros.</li>
+              <li>Sistema fotovoltaico integrado à rede da concessionária e estrutura de prevenção contra incêndio.</li>
+              <li>Acesso por 1.900 metros de via pavimentada, com drenagem lateral e ligação à RJ-142.</li>
+              <li>Construção considerada íntegra, sustentável, de manutenção acessível e com possibilidade de ampliação.</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <div class="eyebrow">Conclusões da avaliação de 2016</div>
+            <ul class="check-list">
+              <li>Custo de reprodução atual médio calculado em <strong>US$ 6.780.452,10</strong>.</li>
+              <li>Valor mercadológico médio calculado em <strong>US$ 6.563.867,80</strong>.</li>
+              <li>Valor médio estimado pelo avaliador: <strong>US$ 6.675.000,00</strong>.</li>
+              <li>Limite inferior de US$ 6.563.867,80 e limite superior de US$ 6.780.452,10.</li>
+              <li>A avaliação descreve materiais de alta qualidade, arquitetura orgânica, estrutura de SPA, centro acústico e sistemas especializados.</li>
+              <li>Os valores são históricos, expressos em dólares e vinculados à data-base do parecer.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="fine-print" style="margin-top:28px">A área construída atual aproximada de 2.500 m² apresentada no dossiê é posterior e não deve ser confundida com os 2.141,84 m² utilizados na avaliação mercadológica de 2016.</p>
+
+        <div class="document-readers">
+          <details class="document-reader reveal">
+            <summary>Leia o laudo técnico completo - 2020</summary>
+            <div class="document-reader-body">
+              <iframe loading="lazy" title="Laudo técnico completo do complexo Regenesis" src="assets/documentos/laudo-tecnico-regenesis.pdf#view=FitH"></iframe>
+              <div class="document-actions">
+                <a class="button-link" href="assets/documentos/laudo-tecnico-regenesis.pdf" target="_blank" rel="noopener">Abrir em tela cheia</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="document-reader reveal">
+            <summary>Leia a avaliação mercadológica completa - 2016</summary>
+            <div class="document-reader-body">
+              <iframe loading="lazy" title="Avaliação mercadológica completa do complexo Regenesis" src="assets/documentos/avaliacao-mercadologica-regenesis.pdf#view=FitH"></iframe>
+              <div class="document-actions">
+                <a class="button-link" href="assets/documentos/avaliacao-mercadologica-regenesis.pdf" target="_blank" rel="noopener">Abrir em tela cheia</a>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -492,6 +641,32 @@
       </div>
     </section>
 
+    <section class="section section-dark" id="localizacao">
+      <div class="container">
+        <div class="map-grid">
+          <div class="reveal">
+            <div class="eyebrow">Localização estratégica</div>
+            <h2 class="section-title">No topo da montanha, em Mury</h2>
+            <p class="section-lead">Rua Virgínia Ribeiro, 1865 - Mury, Nova Friburgo - RJ, CEP 28615-460. O complexo está inserido na Mata Atlântica, entre Mury e Lumiar, com acesso conectado à RJ-142.</p>
+            <ul class="check-list">
+              <li>Altitude aproximada de 1.250 metros.</li>
+              <li>Vista panorâmica da região serrana.</li>
+              <li>Via própria pavimentada e drenada.</li>
+              <li>Operações complementares ao longo de toda a semana.</li>
+            </ul>
+            <div class="link-row">
+              <a class="button-link" href="https://emagre.com/" target="_blank" rel="noopener">Site Emagre</a>
+              <a class="button-link" href="https://www.instagram.com/emagrespa/" target="_blank" rel="noopener">@emagrespa</a>
+              <a class="button-link" href="https://www.instagram.com/espacoregenesis/" target="_blank" rel="noopener">@espacoregenesis</a>
+            </div>
+          </div>
+          <div class="map-wrap reveal">
+            <iframe title="Mapa da localização do complexo Ametista em Mury" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua%20Virg%C3%ADnia%20Ribeiro%201865%20Mury%20Nova%20Friburgo%20RJ&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-deep closing">
       <div class="container">
         <div class="eyebrow">Síntese do investimento</div>
@@ -525,7 +700,13 @@
         <div class="footer-copy">Rua Virgínia Ribeiro, 1865 - Mury, Nova Friburgo, RJ - 28615-460</div>
         <div class="footer-copy">Conteúdo confidencial. Informações sujeitas a diligência técnica, financeira e jurídica.</div>
       </div>
-      <div class="footer-social">@espacoregenesis &nbsp;|&nbsp; @emagrespa</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/espacoregenesis/" target="_blank" rel="noopener">@espacoregenesis</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.instagram.com/emagrespa/" target="_blank" rel="noopener">@emagrespa</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.facebook.com/p/Emagre-SPA-61576883079394/" target="_blank" rel="noopener">Facebook Emagre SPA</a>
+      </div>
     </div>
   </footer>
 
