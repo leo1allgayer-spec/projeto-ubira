@@ -157,6 +157,10 @@
     .map-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 44px; align-items: center; }
     .map-wrap { min-height: 480px; border: 1px solid var(--line); overflow: hidden; background: var(--navy-3); }
     .map-wrap iframe { width: 100%; height: 480px; border: 0; }
+    .property-map { margin-top: 46px; padding: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
+    .property-map img { width: 100%; height: auto; }
+    .property-map-caption { padding: 18px 6px 4px; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .property-map-caption p { color: var(--muted); font-size: .88rem; }
 
     .expansion-numbers { margin-top: 35px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .expansion-number { padding: 22px; background: rgba(255,255,255,.04); border: 1px solid var(--line); }
@@ -219,6 +223,7 @@
       .document-reader iframe { height: 560px; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .footer-social { text-align: left; }
+      .property-map-caption { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
@@ -335,7 +340,7 @@
               <p class="section-lead">13 anos de operação ininterrupta, com foco em grupos fechados e ocupação de fim de semana.</p>
               <div class="company-note"><strong>Operação:</strong> eventos principalmente de sexta a domingo, combinando hospedagem, alimentação, auditório e lazer em regime de exclusividade.</div>
               <div class="link-row">
-                <a class="button-link" href="https://retiro.com.br/locais/espaco-regenesis/" target="_blank" rel="noopener">Conhecer o Regenesis</a>
+                <a class="button-link" href="https://xn--espaoregenises-jjb.com/" target="_blank" rel="noopener">Site do Regenesis</a>
                 <a class="button-link" href="https://www.instagram.com/espacoregenesis/" target="_blank" rel="noopener">Instagram</a>
               </div>
             </div>
@@ -655,6 +660,7 @@
               <li>Operações complementares ao longo de toda a semana.</li>
             </ul>
             <div class="link-row">
+              <a class="button-link" href="https://xn--espaoregenises-jjb.com/" target="_blank" rel="noopener">Site Regenesis</a>
               <a class="button-link" href="https://emagre.com/" target="_blank" rel="noopener">Site Emagre</a>
               <a class="button-link" href="https://www.instagram.com/emagrespa/" target="_blank" rel="noopener">@emagrespa</a>
               <a class="button-link" href="https://www.instagram.com/espacoregenesis/" target="_blank" rel="noopener">@espacoregenesis</a>
@@ -662,6 +668,16 @@
           </div>
           <div class="map-wrap reveal">
             <iframe title="Mapa da localização do complexo Ametista em Mury" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua%20Virg%C3%ADnia%20Ribeiro%201865%20Mury%20Nova%20Friburgo%20RJ&output=embed"></iframe>
+          </div>
+        </div>
+
+        <div class="property-map reveal">
+          <a href="assets/mapas/mapa-completo-regenesis.png" target="_blank" rel="noopener">
+            <img src="assets/mapas/mapa-completo-regenesis.png" alt="Mapa ilustrado completo do complexo Regenesis, com quartos, piscina, restaurante, SPA, auditório, jardins e áreas externas">
+          </a>
+          <div class="property-map-caption">
+            <p>Mapa completo da propriedade com distribuição dos quartos, áreas operacionais, lazer e terrenos.</p>
+            <a class="button-link" href="assets/mapas/mapa-completo-regenesis.png" target="_blank" rel="noopener">Ampliar mapa</a>
           </div>
         </div>
       </div>
