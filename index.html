@@ -102,6 +102,8 @@
     .nav-links { margin-left: auto; display: flex; align-items: center; gap: 25px; }
     .nav-link { color: #b8c3ca; padding: 25px 0 21px; border-bottom: 3px solid transparent; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: .25s ease; }
     .nav-link:hover, .nav-link.active { color: var(--gold-light); border-color: var(--gold); }
+    .menu-toggle { display: none; width: 44px; height: 44px; margin-left: auto; padding: 10px; border: 1px solid var(--line); background: transparent; color: var(--gold-light); cursor: pointer; }
+    .menu-toggle span { display: block; width: 100%; height: 2px; margin: 5px 0; background: currentColor; transition: .25s ease; }
     .chapter-nav { position: fixed; left: 18px; top: 50%; z-index: 45; display: grid; gap: 15px; padding: 18px 16px; transform: translateY(-50%); background: rgba(44,62,80,.94); border: 1px solid rgba(212,175,55,.28); backdrop-filter: blur(10px); }
     .chapter-link { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.55); font-size: .61rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
     .chapter-link::before { content: ""; width: 18px; height: 1px; background: currentColor; transition: .25s ease; }
@@ -164,8 +166,14 @@
     .button-link:hover { background: var(--gold); color: #2e220d; }
     .video-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .video-card { padding: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
-    .video-shell { width: min(100%, 360px); aspect-ratio: 9 / 16; margin: 0 auto; background: #000; overflow: hidden; }
+    .video-shell { position: relative; width: min(100%, 360px); aspect-ratio: 9 / 16; margin: 0 auto; background: #000; overflow: hidden; }
     .video-shell video { width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; inset: 50% auto auto 50%; width: 68px; height: 68px; padding: 0; transform: translate(-50%,-50%); border: 1px solid rgba(255,255,255,.78); border-radius: 50%; background: rgba(44,62,80,.72); color: #fff; cursor: pointer; transition: opacity .2s ease, transform .2s ease, background .2s ease; }
+    .video-play::before { content: ""; display: block; width: 0; height: 0; margin-left: 27px; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid currentColor; }
+    .video-play:hover { background: rgba(212,175,55,.9); color: #2e220d; transform: translate(-50%,-50%) scale(1.05); }
+    .video-shell.playing .video-play { opacity: 0; pointer-events: none; }
+    .video-shell.playing:hover .video-play { opacity: .82; pointer-events: auto; }
+    .video-shell.playing .video-play::before { width: 14px; height: 20px; margin: 0 auto; border: 0; border-left: 5px solid currentColor; border-right: 5px solid currentColor; }
     .video-card h3 { margin-top: 20px; color: var(--gold-light); font-size: 1.45rem; }
     .video-card p { margin-top: 8px; color: var(--muted); }
 
@@ -280,10 +288,17 @@
       :root { --nav-h: 68px; }
       .container { width: min(100% - 28px, var(--max)); }
       .section { padding: 76px 0; }
-      .topbar { overflow: hidden; }
-      .nav-inner { gap: 22px; }
-      .brand { font-size: 1.05rem; }
-      .nav-link { padding-top: 23px; font-size: .62rem; }
+      .topbar { overflow: visible; }
+      .nav-inner { overflow: visible; gap: 16px; }
+      .brand { position: static; padding-right: 0; background: transparent; font-size: 1.08rem; }
+      .menu-toggle { display: block; flex: 0 0 auto; }
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .nav-links { position: absolute; inset: var(--nav-h) 0 auto; display: none; max-height: calc(100vh - var(--nav-h)); margin: 0; padding: 10px 20px 22px; overflow-y: auto; background: rgba(44,62,80,.99); border-bottom: 1px solid var(--line); box-shadow: 0 18px 35px rgba(0,0,0,.28); }
+      .nav-links.open { display: grid; }
+      .nav-link { display: block; padding: 14px 4px 12px; border-bottom: 1px solid rgba(255,255,255,.1); font-size: .72rem; }
+      .nav-link:hover, .nav-link.active { border-bottom-color: var(--gold); }
       .hero-copy { min-height: 620px; padding: 70px 24px 55px; }
       .hero-photo { min-height: 500px; }
       .stat-grid, .card-grid, .engineering-grid, .pillars, .expansion-numbers, .credential-grid, .video-grid { grid-template-columns: 1fr; }
@@ -315,7 +330,10 @@
   <nav class="topbar" aria-label="Navegação principal">
     <div class="container nav-inner">
       <a class="brand" href="#oportunidade">AMETISTA</a>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="main-menu">
         <a class="nav-link active" href="#oportunidade">Oportunidade</a>
         <a class="nav-link" href="#ativo">O ativo</a>
         <a class="nav-link" href="#negocios">O negócio</a>
@@ -487,18 +505,20 @@
           <div class="video-grid">
             <article class="video-card reveal">
               <div class="video-shell">
-                <video controls playsinline preload="metadata" poster="assets/videos/emagre-programa-4-dias.jpg">
+                <video playsinline preload="metadata" poster="assets/videos/emagre-programa-4-dias.jpg">
                   <source src="assets/videos/emagre-programa-4-dias.mp4" type="video/mp4">
                 </video>
+                <button class="video-play" type="button" aria-label="Reproduzir vídeo: Programa de quatro dias"></button>
               </div>
               <h3>Programa de quatro dias</h3>
               <p>Apresentação do pacote, ambientes de tratamento e relatos de participantes.</p>
             </article>
             <article class="video-card reveal">
               <div class="video-shell">
-                <video controls playsinline preload="metadata" poster="assets/videos/emagre-experiencia-completa.jpg">
+                <video playsinline preload="metadata" poster="assets/videos/emagre-experiencia-completa.jpg">
                   <source src="assets/videos/emagre-experiencia-completa.mp4" type="video/mp4">
                 </video>
+                <button class="video-play" type="button" aria-label="Reproduzir vídeo: Experiência completa"></button>
               </div>
               <h3>Experiência completa</h3>
               <p>Atividades na piscina, terapias, convivência, acomodações e vista aérea do complexo.</p>
@@ -871,6 +891,45 @@
   <script>
     const navLinks = [...document.querySelectorAll(".nav-link, .chapter-link")];
     const sections = [...new Set(navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean))];
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainMenu = document.querySelector(".nav-links");
+
+    function closeMobileMenu() {
+      mainMenu.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menu");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const willOpen = !mainMenu.classList.contains("open");
+      mainMenu.classList.toggle("open", willOpen);
+      menuToggle.setAttribute("aria-expanded", String(willOpen));
+      menuToggle.setAttribute("aria-label", willOpen ? "Fechar menu" : "Abrir menu");
+    });
+
+    document.querySelectorAll(".nav-link").forEach(link => link.addEventListener("click", closeMobileMenu));
+
+    document.querySelectorAll(".video-shell").forEach(shell => {
+      const video = shell.querySelector("video");
+      const button = shell.querySelector(".video-play");
+
+      function updateVideoState() {
+        const playing = !video.paused && !video.ended;
+        shell.classList.toggle("playing", playing);
+        button.setAttribute("aria-label", playing ? "Pausar vídeo" : "Reproduzir vídeo");
+      }
+
+      function toggleVideo() {
+        if (video.paused || video.ended) video.play();
+        else video.pause();
+      }
+
+      button.addEventListener("click", toggleVideo);
+      video.addEventListener("click", toggleVideo);
+      video.addEventListener("play", updateVideoState);
+      video.addEventListener("pause", updateVideoState);
+      video.addEventListener("ended", updateVideoState);
+    });
 
     function updateNavigation() {
       const marker = window.scrollY + 140;
@@ -896,7 +955,10 @@
 
     document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
     window.addEventListener("scroll", updateNavigation, { passive: true });
-    window.addEventListener("resize", updateNavigation);
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 700) closeMobileMenu();
+      updateNavigation();
+    });
     updateNavigation();
   </script>
 </body>
