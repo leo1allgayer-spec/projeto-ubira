@@ -167,13 +167,22 @@
     .video-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .video-card { padding: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
     .video-shell { position: relative; width: min(100%, 360px); aspect-ratio: 9 / 16; margin: 0 auto; background: #000; overflow: hidden; }
-    .video-shell video { width: 100%; height: 100%; object-fit: cover; }
+    .video-shell video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .video-shell video::-webkit-media-controls,
+    .video-shell video::-webkit-media-controls-enclosure,
+    .video-shell video::-webkit-media-controls-panel,
+    .video-shell video::-webkit-media-controls-play-button,
+    .video-shell video::-webkit-media-controls-timeline,
+    .video-shell video::-webkit-media-controls-current-time-display,
+    .video-shell video::-webkit-media-controls-time-remaining-display,
+    .video-shell video::-webkit-media-controls-fullscreen-button,
+    .video-shell video::-webkit-media-controls-mute-button { display: none !important; -webkit-appearance: none; }
     .video-play { position: absolute; inset: 50% auto auto 50%; width: 68px; height: 68px; padding: 0; transform: translate(-50%,-50%); border: 1px solid rgba(255,255,255,.78); border-radius: 50%; background: rgba(44,62,80,.72); color: #fff; cursor: pointer; transition: opacity .2s ease, transform .2s ease, background .2s ease; }
     .video-play::before { content: ""; display: block; width: 0; height: 0; margin-left: 27px; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid currentColor; }
     .video-play:hover { background: rgba(212,175,55,.9); color: #2e220d; transform: translate(-50%,-50%) scale(1.05); }
-    .video-shell.playing .video-play { opacity: 0; pointer-events: none; }
-    .video-shell.playing:hover .video-play { opacity: .82; pointer-events: auto; }
+    .video-shell.playing .video-play { opacity: 0; pointer-events: auto; }
     .video-shell.playing .video-play::before { width: 14px; height: 20px; margin: 0 auto; border: 0; border-left: 5px solid currentColor; border-right: 5px solid currentColor; }
+    @media (hover: hover) { .video-shell.playing:hover .video-play { opacity: .82; } }
     .video-card h3 { margin-top: 20px; color: var(--gold-light); font-size: 1.45rem; }
     .video-card p { margin-top: 8px; color: var(--muted); }
 
@@ -505,7 +514,7 @@
           <div class="video-grid">
             <article class="video-card reveal">
               <div class="video-shell">
-                <video playsinline preload="metadata" poster="assets/videos/emagre-programa-4-dias.jpg">
+                <video playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" poster="assets/videos/emagre-programa-4-dias.jpg">
                   <source src="assets/videos/emagre-programa-4-dias.mp4" type="video/mp4">
                 </video>
                 <button class="video-play" type="button" aria-label="Reproduzir vídeo: Programa de quatro dias"></button>
@@ -515,7 +524,7 @@
             </article>
             <article class="video-card reveal">
               <div class="video-shell">
-                <video playsinline preload="metadata" poster="assets/videos/emagre-experiencia-completa.jpg">
+                <video playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" poster="assets/videos/emagre-experiencia-completa.jpg">
                   <source src="assets/videos/emagre-experiencia-completa.mp4" type="video/mp4">
                 </video>
                 <button class="video-play" type="button" aria-label="Reproduzir vídeo: Experiência completa"></button>
@@ -912,6 +921,9 @@
     document.querySelectorAll(".video-shell").forEach(shell => {
       const video = shell.querySelector("video");
       const button = shell.querySelector(".video-play");
+      video.controls = false;
+      video.disablePictureInPicture = true;
+      video.disableRemotePlayback = true;
 
       function updateVideoState() {
         const playing = !video.paused && !video.ended;
@@ -920,12 +932,12 @@
       }
 
       function toggleVideo() {
+        video.controls = false;
         if (video.paused || video.ended) video.play();
         else video.pause();
       }
 
       button.addEventListener("click", toggleVideo);
-      video.addEventListener("click", toggleVideo);
       video.addEventListener("play", updateVideoState);
       video.addEventListener("pause", updateVideoState);
       video.addEventListener("ended", updateVideoState);
