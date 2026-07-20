@@ -10,22 +10,23 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #061827;
-      --navy-2: #0a2235;
-      --navy-3: #102d43;
-      --gold: #d3ab59;
-      --gold-light: #f1d08b;
-      --paper: #f6f1e7;
+      --navy: #2c3e50;
+      --navy-2: #f8f5f2;
+      --navy-3: #3e5550;
+      --gold: #d4af37;
+      --gold-light: #e4c66a;
+      --paper: #f8f5f2;
       --white: #fff;
-      --muted: #aebbc4;
-      --line: rgba(211, 171, 89, .28);
+      --ink: #333333;
+      --muted: #bfc8cc;
+      --line: rgba(212, 175, 55, .32);
       --max: 1200px;
-      --nav-h: 76px;
+      --nav-h: 72px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
-    body { margin: 0; background: var(--navy); color: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+    body { margin: 0; overflow-x: hidden; background: #f8f5f2; color: var(--white); font-family: "DM Sans", sans-serif; line-height: 1.6; }
     img { display: block; width: 100%; }
     a { color: inherit; text-decoration: none; }
     h1, h2, h3 { font-family: "Playfair Display", serif; line-height: 1.08; margin: 0; }
@@ -33,8 +34,8 @@
     section { scroll-margin-top: var(--nav-h); }
     .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
     .section { padding: 104px 0; }
-    .section-dark { background: var(--navy); }
-    .section-deep { background: #04121d; }
+    .section-dark { background: #fff; color: var(--ink); }
+    .section-deep { background: #2c3e50; }
     .section-mid { background: var(--navy-2); }
     .eyebrow { color: var(--gold-light); font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
     .section-title { margin-top: 14px; font-size: clamp(2.25rem, 5vw, 4rem); max-width: 850px; }
@@ -42,27 +43,84 @@
     .gold { color: var(--gold-light); }
     .fine-print { color: var(--muted); font-size: .78rem; }
 
+    /* Paleta de leitura definida pelo manual: creme/branco, grafite e dourado. */
+    .section-mid, .section-dark { color: var(--ink); }
+    .section-mid .section-lead, .section-dark .section-lead,
+    .section-mid .card p, .section-dark .card p,
+    .section-mid .operation-body p, .section-dark .operation-body p,
+    .section-mid .legal-list p, .section-dark .legal-list p,
+    .section-mid .fine-print, .section-dark .fine-print,
+    .section-mid .property-map-caption p, .section-dark .property-map-caption p,
+    .section-mid .faq p, .section-dark .faq p { color: #626262; }
+    .section-mid .eyebrow, .section-dark .eyebrow,
+    .section-mid .card h3, .section-dark .card h3,
+    .section-mid .operation h3, .section-dark .operation h3,
+    .section-mid .legal-list h3, .section-dark .legal-list h3 { color: #927319; }
+    .section-mid .check-list li, .section-dark .check-list li { color: #414141; }
+    .section-mid .card, .section-dark .card,
+    .section-mid .credential, .section-dark .credential,
+    .section-mid .data-category, .section-dark .data-category,
+    .section-mid .document-reader, .section-dark .document-reader,
+    .section-mid .property-map, .section-dark .property-map { background: rgba(44,62,80,.035); }
+    .section-mid .operation, .section-dark .operation { background: #fff; }
+    .section-mid .value-box, .section-dark .value-box { background: rgba(44,62,80,.035); }
+    .section-mid .value-box strong, .section-dark .value-box strong,
+    .section-mid .card strong, .section-dark .card strong { color: var(--ink); }
+    .section-mid .finance-row, .section-dark .finance-row,
+    .section-mid .acquisition-row, .section-dark .acquisition-row { color: var(--ink); }
+    .section-mid .finance-head, .section-dark .finance-head { color: #735a13; background: rgba(212,175,55,.13); }
+    .section-mid .margin-callout, .section-dark .margin-callout { background: rgba(44,62,80,.04); }
+    .section-mid .transition-copy, .section-dark .transition-copy { color: #826716; }
+    .section-mid .stat span, .section-dark .stat span,
+    .section-mid .credential span, .section-dark .credential span,
+    .section-mid .expansion-number span, .section-dark .expansion-number span,
+    .section-mid .video-card p, .section-dark .video-card p,
+    .section-mid .data-category span, .section-dark .data-category span { color: #626262; }
+    .section-mid .expansion-number, .section-dark .expansion-number,
+    .section-mid .video-card, .section-dark .video-card { background: rgba(44,62,80,.035); }
+    .section-mid .roadmap span, .section-dark .roadmap span { background: rgba(44,62,80,.05); color: #414141; }
+    .section-mid .document-reader summary, .section-dark .document-reader summary,
+    .section-mid .credential strong, .section-dark .credential strong,
+    .section-mid .expansion-number strong, .section-dark .expansion-number strong,
+    .section-mid .data-category strong, .section-dark .data-category strong { color: #826716; }
+    .section-mid .company-note, .section-dark .company-note {
+      color: #414141;
+      background: rgba(212,175,55,.11);
+    }
+    .section-mid .button-link, .section-dark .button-link { color: #826716; }
+    .section-mid .button-link:hover, .section-dark .button-link:hover { color: #2e220d; }
+
     .topbar {
       position: fixed; inset: 0 0 auto; height: var(--nav-h); z-index: 50;
-      background: rgba(4, 18, 29, .92); border-bottom: 1px solid var(--line);
+      background: rgba(44, 62, 80, .96); border-bottom: 1px solid var(--line);
       backdrop-filter: blur(16px);
     }
+    .progress-track { position: fixed; inset: 0 0 auto; height: 3px; z-index: 80; background: rgba(255,255,255,.08); }
+    .progress-bar { display: block; width: 0; height: 100%; background: var(--gold); transition: width .12s linear; }
     .nav-inner { height: 100%; display: flex; align-items: center; gap: 38px; }
     .brand { color: var(--gold-light); font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 700; letter-spacing: .12em; white-space: nowrap; }
     .nav-links { margin-left: auto; display: flex; align-items: center; gap: 25px; }
     .nav-link { color: #b8c3ca; padding: 25px 0 21px; border-bottom: 3px solid transparent; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: .25s ease; }
     .nav-link:hover, .nav-link.active { color: var(--gold-light); border-color: var(--gold); }
+    .chapter-nav { position: fixed; left: 18px; top: 50%; z-index: 45; display: grid; gap: 15px; padding: 18px 16px; transform: translateY(-50%); background: rgba(44,62,80,.94); border: 1px solid rgba(212,175,55,.28); backdrop-filter: blur(10px); }
+    .chapter-link { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.55); font-size: .61rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .chapter-link::before { content: ""; width: 18px; height: 1px; background: currentColor; transition: .25s ease; }
+    .chapter-link:hover, .chapter-link.active { color: var(--gold-light); }
+    .chapter-link.active::before { width: 32px; height: 2px; background: var(--gold); }
 
-    .hero { min-height: 100vh; padding-top: var(--nav-h); display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 1.05fr); background: #04121d; }
+    .hero { min-height: 100vh; padding-top: var(--nav-h); display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 1.05fr); background: #2c3e50; }
     .hero-copy { padding: 90px max(40px, calc((100vw - var(--max)) / 2)) 70px max(40px, calc((100vw - var(--max)) / 2)); padding-right: 64px; display: flex; flex-direction: column; justify-content: center; }
-    .hero h1 { margin-top: 20px; font-size: clamp(3rem, 5.6vw, 6.25rem); }
+    .hero h1 { margin-top: 20px; font-size: clamp(2.8rem, 4.4vw, 5rem); }
     .hero-sub { margin-top: 25px; color: #c6d0d6; font-size: clamp(1rem, 1.7vw, 1.35rem); max-width: 650px; }
+    .hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .cta { display: inline-flex; min-height: 48px; padding: 12px 20px; align-items: center; justify-content: center; border: 1px solid var(--gold); color: var(--gold-light); font-size: .7rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .cta-primary { background: var(--gold); color: #2e220d; }
     .hero-price { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
     .hero-price strong { display: block; color: var(--gold-light); font: 600 clamp(2rem, 3.5vw, 3.4rem)/1 "Playfair Display", serif; }
     .hero-price span { display: block; margin-top: 10px; color: var(--muted); }
     .hero-photo { min-height: 620px; position: relative; overflow: hidden; }
     .hero-photo img { height: 100%; object-fit: cover; }
-    .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #04121d 0, transparent 25%), linear-gradient(0deg, rgba(4,18,29,.5), transparent 35%); }
+    .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #2c3e50 0, transparent 25%), linear-gradient(0deg, rgba(44,62,80,.5), transparent 35%); }
     .photo-caption { position: absolute; z-index: 2; right: 24px; bottom: 20px; color: rgba(255,255,255,.78); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 
     .stat-grid { margin-top: 55px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
@@ -175,7 +233,7 @@
     .pillar h3 { margin-top: 10px; font-size: 1.5rem; }
     .pillar p { margin-top: 12px; color: var(--muted); }
 
-    footer { padding: 46px 0; border-top: 1px solid var(--line); background: #020c13; }
+    footer { padding: 46px 0; border-top: 1px solid var(--line); background: #263746; }
     .footer-grid { display: flex; justify-content: space-between; gap: 30px; align-items: flex-end; }
     .footer-title { color: var(--gold-light); font-family: "Playfair Display", serif; font-size: 1.35rem; }
     .footer-copy { margin-top: 10px; color: var(--muted); font-size: .84rem; }
@@ -183,6 +241,26 @@
 
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+    .transition-copy { margin-top: 54px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--gold-light); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+    .acquisition-table { margin-top: 42px; border: 1px solid var(--line); }
+    .acquisition-row { display: grid; grid-template-columns: .9fr 1.4fr 1fr; }
+    .acquisition-row > div { padding: 20px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .acquisition-row > div:last-child { border-right: 0; }
+    .acquisition-row:last-child > div { border-bottom: 0; }
+    .roadmap { margin-top: 34px; display: grid; grid-template-columns: repeat(6,1fr); gap: 8px; counter-reset: step; }
+    .roadmap span { padding: 20px 10px; border-top: 2px solid var(--gold); background: rgba(255,255,255,.04); color: #dce3e4; text-align: center; font-size: .76rem; }
+    .faq { margin-top: 42px; display: grid; gap: 10px; }
+    .faq details { border: 1px solid var(--line); background: rgba(255,255,255,.03); }
+    .faq summary { cursor: pointer; padding: 20px 24px; color: var(--gold-light); font-weight: 700; }
+    .faq p { padding: 0 24px 22px; color: var(--muted); }
+    .data-categories { margin-top: 42px; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; text-align: left; }
+    .data-category { padding: 25px; border: 1px solid var(--line); background: rgba(255,255,255,.03); }
+    .data-category strong { display: block; color: var(--gold-light); }
+    .data-category span { display: block; margin-top: 8px; color: var(--muted); font-size: .82rem; }
+
+    @media (max-width: 1400px) {
+      .chapter-nav { display: none; }
+    }
 
     @media (max-width: 1050px) {
       .nav-inner { overflow-x: auto; }
@@ -224,35 +302,51 @@
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .footer-social { text-align: left; }
       .property-map-caption { align-items: flex-start; flex-direction: column; }
+      .acquisition-row { grid-template-columns: 1fr; }
+      .acquisition-row > div { border-right: 0; }
+      .acquisition-row > div:not(:last-child) { border-bottom: 1px solid var(--line); }
+      .roadmap { grid-template-columns: repeat(2,1fr); }
+      .data-categories { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+  <div class="progress-track" aria-hidden="true"><span class="progress-bar"></span></div>
   <nav class="topbar" aria-label="Navegação principal">
     <div class="container nav-inner">
       <a class="brand" href="#oportunidade">AMETISTA</a>
       <div class="nav-links">
         <a class="nav-link active" href="#oportunidade">Oportunidade</a>
-        <a class="nav-link" href="#negocios">Negócios</a>
-        <a class="nav-link" href="#tese">Tese</a>
-        <a class="nav-link" href="#performance">Performance</a>
-        <a class="nav-link" href="#infraestrutura">Infraestrutura</a>
-        <a class="nav-link" href="#laudos">Laudos</a>
-        <a class="nav-link" href="#juridico">Segurança jurídica</a>
-        <a class="nav-link" href="#expansao">Expansão</a>
+        <a class="nav-link" href="#ativo">O ativo</a>
+        <a class="nav-link" href="#negocios">O negócio</a>
+        <a class="nav-link" href="#transacao">Transação</a>
+        <a class="nav-link" href="#proximos-passos">Próximos passos</a>
+        <a class="nav-link" href="#data-room">Data Room</a>
       </div>
     </div>
   </nav>
+  <aside class="chapter-nav" aria-label="Capítulos da apresentação">
+    <a class="chapter-link active" href="#oportunidade">Oportunidade</a>
+    <a class="chapter-link" href="#ativo">O ativo</a>
+    <a class="chapter-link" href="#negocios">O negócio</a>
+    <a class="chapter-link" href="#transacao">Transação</a>
+    <a class="chapter-link" href="#proximos-passos">FAQ</a>
+    <a class="chapter-link" href="#data-room">Data Room</a>
+  </aside>
 
   <main>
     <header class="hero" id="oportunidade">
       <div class="hero-copy">
         <div class="eyebrow">Memorando de investimento estratégico</div>
-        <h1>AMETISTA<br><span class="gold">Participações S.A.</span></h1>
-        <p class="hero-sub">Complexo de luxo em altitude com duas operações consolidadas de eventos, saúde e bem-estar em Nova Friburgo, Rio de Janeiro.</p>
+        <h1>O encontro raro entre <span class="gold">segurança patrimonial</span> e alta rentabilidade.</h1>
+        <p class="hero-sub">Adquira um ativo imobiliário singular a 1.250 metros de altitude, com desconto indicado superior a 60% sobre o custo estimado de reposição e duas operações consolidadas.</p>
         <div class="hero-price">
           <strong>R$ 14,8 milhões</strong>
           <span>Preço de aquisição apresentado no dossiê, com desconto real superior a 60% sobre o custo estimado de reposição.</span>
+        </div>
+        <div class="hero-actions">
+          <a class="cta cta-primary" href="#data-room">Solicitar acesso ao Data Room</a>
+          <a class="cta" href="#proximos-passos">Conhecer o processo</a>
         </div>
       </div>
       <div class="hero-photo">
@@ -267,7 +361,7 @@
           <div class="reveal">
             <div class="eyebrow">O ativo real em altitude</div>
             <h2 class="section-title">Uma holding. Duas empresas operacionais complementares.</h2>
-            <p class="section-lead">A Ametista Participações S.A. (CNPJ 04.428.008/0001-04) está por trás de todo o ativo: é a holding proprietária do complexo imobiliário e da estrutura que sustenta as operações do Espaço Regenesis e do Emagre SPA, a 1.250 metros de altitude em Nova Friburgo.</p>
+            <p class="section-lead">A Ametista Participações S.A. é apresentada como a holding proprietária do complexo imobiliário e da estrutura que sustenta as operações do Espaço Regenesis e do Emagre SPA, a aproximadamente 1.250 metros de altitude em Nova Friburgo.</p>
             <ul class="check-list">
               <li><strong>Ametista:</strong> propriedade, infraestrutura, expansão e governança patrimonial.</li>
               <li><strong>Espaço Regenesis:</strong> eventos fechados, retiros, encontros e celebrações, principalmente de sexta a domingo.</li>
@@ -287,6 +381,7 @@
           <div class="stat"><strong>13 anos</strong><span>Operação consolidada do Espaço Regenesis</span></div>
           <div class="stat"><strong>3 empresas</strong><span>Ametista, Regenesis e Emagre no mesmo ecossistema</span></div>
         </div>
+        <p class="transition-copy">A seguir: a tese econômica e o patrimônio físico que sustentam o valor.</p>
       </div>
     </section>
 
@@ -444,7 +539,7 @@
       </div>
     </section>
 
-    <section class="section section-deep" id="infraestrutura">
+    <section class="section section-deep" id="ativo">
       <div class="container">
         <div class="eyebrow">Engenharia de defesa</div>
         <h2 class="section-title">Estrutura técnica e autossuficiência crítica</h2>
@@ -542,26 +637,15 @@
         <p class="fine-print" style="margin-top:28px">A área construída atual aproximada de 2.500 m² apresentada no dossiê é posterior e não deve ser confundida com os 2.141,84 m² utilizados na avaliação mercadológica de 2016.</p>
 
         <div class="document-readers">
-          <details class="document-reader reveal">
-            <summary>Leia o laudo técnico completo - 2020</summary>
+          <div class="document-reader reveal">
             <div class="document-reader-body">
-              <iframe loading="lazy" title="Laudo técnico completo do complexo Regenesis" src="assets/documentos/laudo-tecnico-regenesis.pdf#view=FitH"></iframe>
-              <div class="document-actions">
-                <a class="button-link" href="assets/documentos/laudo-tecnico-regenesis.pdf" target="_blank" rel="noopener">Abrir em tela cheia</a>
-              </div>
+              <div class="eyebrow">Documentação protegida</div>
+              <p class="section-lead">Os documentos completos — incluindo laudo técnico, avaliação mercadológica, matrículas, DREs e projetos — integram o Data Room e são disponibilizados após qualificação e assinatura de NDA.</p>
+              <div class="document-actions"><a class="button-link" href="#data-room">Ver estrutura do Data Room</a></div>
             </div>
-          </details>
-
-          <details class="document-reader reveal">
-            <summary>Leia a avaliação mercadológica completa - 2016</summary>
-            <div class="document-reader-body">
-              <iframe loading="lazy" title="Avaliação mercadológica completa do complexo Regenesis" src="assets/documentos/avaliacao-mercadologica-regenesis.pdf#view=FitH"></iframe>
-              <div class="document-actions">
-                <a class="button-link" href="assets/documentos/avaliacao-mercadologica-regenesis.pdf" target="_blank" rel="noopener">Abrir em tela cheia</a>
-              </div>
-            </div>
-          </details>
+          </div>
         </div>
+        <p class="transition-copy">A seguir: estrutura fundiária, expansão e alternativas de aquisição.</p>
       </div>
     </section>
 
@@ -604,11 +688,11 @@
             <div class="expansion-numbers">
               <div class="expansion-number"><strong>50</strong><span>Novas suítes planejadas no projeto aprovado</span></div>
               <div class="expansion-number"><strong>14</strong><span>Unidades em fase avançada, sendo cinco em acabamento</span></div>
-              <div class="expansion-number"><strong>30</strong><span>Unidades em dois projetos adicionais no pipeline</span></div>
+              <div class="expansion-number"><strong>5</strong><span>Unidades em fase de acabamento, dentro das 14 avançadas</span></div>
             </div>
             <ul class="check-list">
               <li>Receita imediata das cinco suítes prontas e receita futura das 50 suítes.</li>
-              <li>Sem necessidade de novos licenciamentos ambientais, conforme o dossiê.</li>
+              <li>Projeto apresentado como aprovado no dossiê, sujeito à confirmação documental no Data Room.</li>
               <li>Crescimento sem novos custos de aquisição de clientes.</li>
               <li>Impacto projetado de aproximadamente 20% a 30% na receita, com margem mantida.</li>
               <li>Ativo apresentado como livre e desembaraçado para transição imediata.</li>
@@ -683,6 +767,64 @@
       </div>
     </section>
 
+    <section class="section section-mid" id="transacao">
+      <div class="container">
+        <div class="eyebrow">Estrutura da transação</div>
+        <h2 class="section-title">Conformidade e flexibilidade para diferentes perfis de comprador</h2>
+        <p class="section-lead">A operação pode ser estruturada pela aquisição das ações da holding proprietária, pela compra direta do imóvel ou, opcionalmente, pela incorporação das operações existentes. A configuração final está sujeita à análise jurídica, tributária e à due diligence do comprador.</p>
+
+        <div class="acquisition-table reveal" role="table" aria-label="Alternativas de aquisição">
+          <div class="acquisition-row finance-head" role="row"><div>Modalidade</div><div>Descrição</div><div>Perfil</div></div>
+          <div class="acquisition-row" role="row"><div><strong>Ações da holding</strong></div><div>Transferência do controle da sociedade proprietária, preservando a continuidade do ativo.</div><div>Investidor patrimonial</div></div>
+          <div class="acquisition-row" role="row"><div><strong>Imóvel direto</strong></div><div>Escritura do patrimônio imobiliário em nome do comprador.</div><div>Comprador do ativo</div></div>
+          <div class="acquisition-row" role="row"><div><strong>Com operações</strong></div><div>Imóvel, marcas, estrutura operacional, equipe e contratos, conforme negociação.</div><div>Operador hoteleiro</div></div>
+          <div class="acquisition-row" role="row"><div><strong>Sem operações</strong></div><div>Aquisição concentrada no patrimônio imobiliário.</div><div>Family office</div></div>
+        </div>
+
+        <div class="roadmap reveal" aria-label="Etapas previstas da aquisição">
+          <span>NDA</span><span>Data Room</span><span>Due diligence</span><span>Proposta</span><span>Assinatura</span><span>Transição</span>
+        </div>
+        <p class="fine-print" style="margin-top:18px">A eventual incidência de ITBI, efeitos fiscais e forma definitiva de transferência devem ser confirmados por assessores especializados de ambas as partes.</p>
+        <p class="transition-copy">A seguir: respostas objetivas às principais dúvidas do processo.</p>
+      </div>
+    </section>
+
+    <section class="section section-deep" id="proximos-passos">
+      <div class="container">
+        <div class="eyebrow">FAQ estratégico</div>
+        <h2 class="section-title">Perguntas essenciais antes da diligência</h2>
+        <div class="faq">
+          <details class="reveal"><summary>O que exatamente está à venda?</summary><p>A venda principal contempla o patrimônio imobiliário ou a holding proprietária. A assunção das operações Regenesis e Emagre é opcional e depende da estrutura negociada.</p></details>
+          <details class="reveal"><summary>Qual é a situação registral apresentada?</summary><p>O dossiê informa nove escrituras — cinco definitivas e registradas e quatro de posse —, áreas principais remembradas e averbadas e acesso exclusivo. A confirmação documental integra a due diligence.</p></details>
+          <details class="reveal"><summary>As operações são obrigatórias?</summary><p>Não. O comprador poderá avaliar a aquisição do patrimônio isoladamente ou a continuidade de uma ou ambas as operações.</p></details>
+          <details class="reveal"><summary>Por que o preço está abaixo do custo estimado de reposição?</summary><p>Segundo o material apresentado, parte relevante do investimento foi realizada em outro contexto de custos e câmbio. A comparação deverá ser validada por avaliação independente atualizada.</p></details>
+          <details class="reveal"><summary>Como funciona o acesso aos documentos?</summary><p>Após qualificação do interessado e assinatura do NDA, o acesso é concedido ao ambiente protegido de diligência, com permissões e prazo definidos.</p></details>
+          <details class="reveal"><summary>Quais informações ficam reservadas?</summary><p>DREs, balanços, contratos, passivos, matrículas, laudos completos, licenças e projetos detalhados ficam no Data Room.</p></details>
+        </div>
+        <p class="transition-copy">Próximo passo: conhecer o conteúdo documental disponível sob confidencialidade.</p>
+      </div>
+    </section>
+
+    <section class="section section-dark closing" id="data-room">
+      <div class="container">
+        <div class="eyebrow">Ambiente de diligência</div>
+        <h2 class="section-title">Data Room organizado para uma análise objetiva</h2>
+        <p class="section-lead">O acesso aos documentos integrais deve ocorrer em uma plataforma profissional de VDR, após qualificação e NDA. Esta página pública apresenta apenas o resumo executivo.</p>
+        <div class="data-categories">
+          <div class="data-category"><strong>01 · Financeiro</strong><span>DREs, balanços, fluxo de caixa histórico e projetado.</span></div>
+          <div class="data-category"><strong>02 · Jurídico e societário</strong><span>Estatuto, certidões, organograma e contratos.</span></div>
+          <div class="data-category"><strong>03 · Imobiliário</strong><span>Matrículas, escrituras, averbações e remembramentos.</span></div>
+          <div class="data-category"><strong>04 · Engenharia</strong><span>Laudo técnico, plantas e projetos estruturais.</span></div>
+          <div class="data-category"><strong>05 · Licenciamento</strong><span>Licença ambiental, bombeiros, alvarás e outorgas.</span></div>
+          <div class="data-category"><strong>06 · Operação e expansão</strong><span>Avaliação mercadológica, inventário, KPIs e projeto de suítes.</span></div>
+        </div>
+        <div class="hero-actions" style="justify-content:center">
+          <a class="cta cta-primary" href="#data-room" aria-label="Data Room em fase de configuração">Data Room em configuração</a>
+        </div>
+        <p class="fine-print" style="margin-top:18px">A ativação do acesso depende da contratação do VDR, definição do NDA e configuração do fluxo de qualificação. Nenhum acesso é concedido automaticamente por este site.</p>
+      </div>
+    </section>
+
     <section class="section section-deep closing">
       <div class="container">
         <div class="eyebrow">Síntese do investimento</div>
@@ -727,16 +869,23 @@
   </footer>
 
   <script>
-    const navLinks = [...document.querySelectorAll(".nav-link")];
-    const sections = navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+    const navLinks = [...document.querySelectorAll(".nav-link, .chapter-link")];
+    const sections = [...new Set(navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean))];
 
     function updateNavigation() {
       const marker = window.scrollY + 140;
       let current = sections[0];
+      let greatestOffset = -1;
       sections.forEach(section => {
-        if (section.offsetTop <= marker) current = section;
+        if (section.offsetTop <= marker && section.offsetTop > greatestOffset) {
+          current = section;
+          greatestOffset = section.offsetTop;
+        }
       });
       navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${current.id}`));
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      document.querySelector(".progress-bar").style.width = `${Math.min(100, progress)}%`;
     }
 
     const revealObserver = new IntersectionObserver(entries => {
