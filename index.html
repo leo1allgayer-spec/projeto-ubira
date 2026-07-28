@@ -80,6 +80,15 @@
     .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #04121d 0, transparent 25%), linear-gradient(0deg, rgba(4,18,29,.5), transparent 35%); }
     .photo-caption { position: absolute; z-index: 2; right: 24px; bottom: 20px; color: rgba(255,255,255,.78); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 
+    .opening-film { min-height: 100vh; padding: calc(var(--nav-h) + 54px) 0 68px; display: grid; align-items: center; background: radial-gradient(circle at 74% 36%, #12334b 0, #061827 38%, #04121d 74%); }
+    .opening-film-grid { display: grid; grid-template-columns: minmax(0, .72fr) minmax(520px, 1.28fr); gap: 60px; align-items: center; }
+    .opening-film h2 { margin-top: 16px; font-size: clamp(2.7rem, 5vw, 5.2rem); }
+    .opening-film-copy { margin-top: 22px; max-width: 540px; color: var(--muted); font-size: 1.08rem; }
+    .opening-video-shell { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); background: #000; box-shadow: 0 34px 80px rgba(0,0,0,.42); }
+    .opening-video-shell video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .opening-video-shell.playing .video-play { opacity: 0; pointer-events: auto; }
+    .opening-video-shell.playing .video-play::before { width: 14px; height: 20px; margin: 0 auto; border: 0; border-left: 5px solid currentColor; border-right: 5px solid currentColor; }
+
     .stat-grid { margin-top: 55px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
     .stat { padding: 30px; border-right: 1px solid var(--line); }
     .stat:last-child { border: 0; }
@@ -119,7 +128,7 @@
     .link-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
     .button-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 16px; border: 1px solid var(--gold); color: var(--gold-light); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: .2s ease; }
     .button-link:hover { background: var(--gold); color: #2e220d; }
-    .video-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .video-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .video-card { padding: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
     .video-shell { position: relative; width: min(100%, 360px); aspect-ratio: 9 / 16; margin: 0 auto; background: #000; overflow: hidden; }
     .video-shell video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
@@ -154,6 +163,11 @@
     .engineering-grid { margin-top: 45px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .engineering-card { padding: 30px; background: rgba(255,255,255,.035); border-top: 3px solid var(--gold); }
     .engineering-card h3 { font-size: 1.35rem; color: var(--gold-light); }
+    .engineering-media { margin-top: 28px; display: grid; gap: 12px; }
+    .engineering-media figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: #071c2b; }
+    .engineering-media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .engineering-media .technical-drawing { object-fit: contain; background: #fff; }
+    .engineering-media figcaption { padding: 12px 14px; color: var(--muted); font-size: .76rem; }
 
     .gallery { margin-top: 48px; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 250px; gap: 12px; }
     .gallery figure { margin: 0; position: relative; overflow: hidden; background: var(--navy-3); }
@@ -164,6 +178,22 @@
     .gallery img { height: 100%; object-fit: cover; transition: transform .5s ease; }
     .gallery figure:hover img { transform: scale(1.025); }
     .gallery figcaption { position: absolute; inset: auto 0 0; padding: 28px 18px 14px; background: linear-gradient(transparent, rgba(4,18,29,.9)); color: var(--white); font-size: .8rem; }
+
+    .amenity-showcase { margin-top: 48px; display: grid; gap: 24px; }
+    .amenity-block { padding: 30px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
+    .amenity-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .9fr); gap: 36px; align-items: end; margin-bottom: 24px; }
+    .amenity-heading h3 { color: var(--gold-light); font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .amenity-heading p { color: var(--muted); }
+    .amenity-heading strong { color: var(--white); }
+    .amenity-gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: 260px; gap: 12px; }
+    .amenity-gallery figure { position: relative; margin: 0; overflow: hidden; background: var(--navy-3); }
+    .amenity-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .amenity-gallery figure:hover img { transform: scale(1.025); }
+    .amenity-gallery figcaption { position: absolute; inset: auto 0 0; padding: 38px 16px 13px; background: linear-gradient(transparent, rgba(4,18,29,.92)); color: var(--white); font-size: .76rem; }
+    .amenity-gallery-acoustic figure { grid-column: span 6; grid-row: span 2; }
+    .amenity-gallery-spa figure:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .amenity-gallery-spa figure:nth-child(2) { grid-column: span 7; grid-row: span 2; }
+    .amenity-gallery-spa figure:nth-child(n+3) { grid-column: span 4; }
 
     .document-wrap { padding: 14px; background: #fff; border: 1px solid var(--line); }
     .document-wrap img { object-fit: contain; max-height: 680px; }
@@ -238,6 +268,7 @@
       .nav-inner { overflow-x: auto; }
       .nav-links { gap: 18px; }
       .brand { position: sticky; left: 0; z-index: 2; background: rgba(4,18,29,.98); padding-right: 20px; }
+      .opening-film-grid { grid-template-columns: 1fr; gap: 36px; }
       .hero { grid-template-columns: 1fr; }
       .hero-copy { min-height: 670px; padding-left: max(40px, calc((100vw - var(--max)) / 2)); }
       .hero-photo { min-height: 620px; }
@@ -264,6 +295,8 @@
       .nav-link { display: block; padding: 14px 4px 12px; border-bottom: 1px solid rgba(255,255,255,.1); font-size: .72rem; }
       .nav-link:hover, .nav-link.active { border-bottom-color: var(--gold); }
       .logout-link { margin-top: 10px; justify-content: center; }
+      .opening-film { min-height: auto; padding: calc(var(--nav-h) + 42px) 0 48px; }
+      .opening-film h2 { font-size: clamp(2.35rem, 12vw, 3.6rem); }
       .hero-copy { min-height: 620px; padding: 70px 24px 55px; }
       .hero-photo { min-height: 500px; }
       .stat-grid, .card-grid, .engineering-grid, .pillars, .expansion-numbers, .credential-grid, .video-grid { grid-template-columns: 1fr; }
@@ -276,8 +309,13 @@
       .finance-row > div:nth-child(4) { display: none; }
       .finance-row > div { padding: 16px 12px; }
       .margin-callout { align-items: flex-start; flex-direction: column; }
+      .margin-callout strong { white-space: normal; font-size: 2.05rem; }
       .gallery { display: grid; grid-template-columns: 1fr; grid-auto-rows: 300px; }
       .gallery figure:nth-child(n) { grid-column: auto; grid-row: auto; }
+      .amenity-block { padding: 18px; }
+      .amenity-heading { grid-template-columns: 1fr; gap: 10px; }
+      .amenity-gallery { grid-template-columns: 1fr; grid-auto-rows: 390px; }
+      .amenity-gallery figure:nth-child(n) { grid-column: auto; grid-row: auto; }
       .document-reader iframe { height: 560px; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .footer-social { text-align: left; }
@@ -319,6 +357,22 @@
   </aside>
 
   <main>
+    <section class="opening-film" aria-labelledby="titulo-video-abertura">
+      <div class="container opening-film-grid">
+        <div class="reveal">
+          <div class="eyebrow">Apresentação do empreendimento</div>
+          <h2 id="titulo-video-abertura">Conheça a dimensão da <span class="gold">Ametista.</span></h2>
+          <p class="opening-film-copy">Uma visão inicial do complexo, de sua arquitetura e da experiência construída em meio à Mata Atlântica.</p>
+        </div>
+        <div class="opening-video-shell reveal">
+          <video playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" poster="assets/apresentacao/video-abertura-poster.jpg">
+            <source src="assets/apresentacao/video-abertura.mp4" type="video/mp4">
+          </video>
+          <button class="video-play" type="button" aria-label="Reproduzir vídeo de apresentação do empreendimento"></button>
+        </div>
+      </div>
+    </section>
+
     <header class="hero" id="oportunidade">
       <div class="hero-copy">
         <div class="eyebrow">Memorando de investimento estratégico</div>
@@ -334,8 +388,8 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="assets/dossie-real/fachada-jardim.jpg" alt="Fachada e jardins reais do complexo Ametista em Nova Friburgo">
-        <div class="photo-caption">Fotografia original do empreendimento</div>
+        <img src="assets/apresentacao/complexo-noturno.jpeg" alt="Vista noturna real do complexo Ametista, piscina e torre iluminadas">
+        <div class="photo-caption">Vista noturna do empreendimento</div>
       </div>
     </header>
 
@@ -489,6 +543,16 @@
               <h3>Experiência completa</h3>
               <p>Atividades na piscina, terapias, convivência, acomodações e vista aérea do complexo.</p>
             </article>
+            <article class="video-card reveal">
+              <div class="video-shell">
+                <video playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" poster="assets/apresentacao/video-apresentacao-poster.jpg">
+                  <source src="assets/apresentacao/video-apresentacao.mp4" type="video/mp4">
+                </video>
+                <button class="video-play" type="button" aria-label="Reproduzir vídeo: Apresentação do empreendimento"></button>
+              </div>
+              <h3>Apresentação do empreendimento</h3>
+              <p>Uma visão do complexo, de sua arquitetura e da experiência construída em meio à Mata Atlântica.</p>
+            </article>
           </div>
         </div>
       </div>
@@ -540,6 +604,16 @@
               <li>Ancoragem em rocha firme.</li>
               <li>Estrutura apresentada como íntegra e de baixo risco técnico.</li>
             </ul>
+            <div class="engineering-media">
+              <figure>
+                <img src="assets/engenharia/vista-aerea-contencao.png" alt="Vista aérea do complexo e do sistema de contenção em tubulões">
+                <figcaption>Vista aérea do complexo e da contenção perimetral.</figcaption>
+              </figure>
+              <figure>
+                <img class="technical-drawing" src="assets/engenharia/desenho-tecnico-contencao.jpeg" alt="Desenho técnico do complexo e dos tubulões de contenção">
+                <figcaption>Representação técnica da implantação e dos tubulões.</figcaption>
+              </figure>
+            </div>
           </article>
           <article class="engineering-card reveal">
             <h3>Autossuficiência operacional</h3>
@@ -549,6 +623,16 @@
               <li>Usina solar de 53 kW, com 136 placas.</li>
               <li>Gerador industrial de 75 KVA.</li>
             </ul>
+            <div class="engineering-media">
+              <figure>
+                <img src="assets/engenharia/mapa-sistema-hidrico.jpeg" alt="Mapa aéreo do sistema hídrico, poço artesiano e reservatórios do complexo">
+                <figcaption>Representação do abastecimento pelo poço artesiano e dos reservatórios de água.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/engenharia/estrutura-poco-artesiano.jpeg" alt="Estrutura técnica do poço artesiano em área de mata">
+                <figcaption>Estrutura técnica associada ao sistema hídrico, em área de mata.</figcaption>
+              </figure>
+            </div>
           </article>
         </div>
 
@@ -561,10 +645,69 @@
           <figure class="reveal"><img src="assets/dossie-real/sala-tratamento.jpg" alt="Sala real de tratamento"><figcaption>Uma das salas de tratamento do SPA</figcaption></figure>
         </div>
 
-        <div class="card-grid">
-          <article class="card"><h3>Centro acústico</h3><p><strong>200 m²</strong> com isolamento de alta densidade.</p></article>
-          <article class="card"><h3>Estrutura de bem-estar</h3><p>Seis salas privativas, piscina com cascata e SPA europeu completo.</p></article>
-          <article class="card"><h3>Apoio operacional</h3><p>Cozinha industrial em aço inox, preparada para grandes eventos, além de haras.</p></article>
+        <div class="amenity-showcase">
+          <article class="amenity-block reveal">
+            <div class="amenity-heading">
+              <h3>Centro acústico</h3>
+              <p><strong>200 m²</strong> com isolamento de alta densidade e ambientes preparados para apresentações e convivência.</p>
+            </div>
+            <div class="amenity-gallery amenity-gallery-acoustic">
+              <figure>
+                <img src="assets/centro-acustico/centro-acustico-01.jpeg" alt="Ambiente interno do centro acústico preparado com palco e assentos">
+                <figcaption>Ambiente para apresentações e encontros</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/centro-acustico/centro-acustico-02.jpeg" alt="Área interna de convivência do centro acústico">
+                <figcaption>Área interna de convivência</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="amenity-block reveal">
+            <div class="amenity-heading">
+              <h3>Estrutura de bem-estar</h3>
+              <p>Seis salas privativas, piscina com cascata e SPA europeu completo, apresentados em fotografias atuais dos ambientes.</p>
+            </div>
+            <div class="amenity-gallery amenity-gallery-spa">
+              <figure>
+                <img src="assets/bem-estar/sala-tratamento.jpeg" alt="Sala privativa de tratamento do SPA">
+                <figcaption>Sala privativa de tratamento</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/bem-estar/piscina-interna-spa.jpeg" alt="Piscina interna do SPA com cascata e colunas decorativas">
+                <figcaption>Piscina interna com cascata</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/bem-estar/sala-banheira-tratamento.jpeg" alt="Sala do SPA com banheira e maca de tratamento">
+                <figcaption>Sala com banheira e maca de tratamento</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/bem-estar/corredor-salas.jpeg" alt="Corredor de acesso às salas privativas do SPA">
+                <figcaption>Acesso às salas privativas</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/bem-estar/circulacao-spa.jpeg" alt="Área de circulação e convivência do SPA">
+                <figcaption>Circulação e convivência</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="amenity-block reveal">
+          <div class="amenity-heading">
+            <h3>Apoio operacional</h3>
+            <p>Cozinha industrial em aço inox, preparada para grandes eventos, além de estrutura de haras.</p>
+          </div>
+          <div class="amenity-gallery amenity-gallery-acoustic">
+            <figure>
+              <img src="assets/apoio-operacional/cozinha-industrial.jpeg" alt="Cozinha industrial do complexo com equipamentos em aço inox">
+              <figcaption>Cozinha industrial equipada</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/apoio-operacional/haras.jpeg" alt="Estrutura do haras existente no complexo">
+              <figcaption>Estrutura do haras</figcaption>
+            </figure>
+          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -875,7 +1018,7 @@
 
     document.querySelectorAll(".nav-link").forEach(link => link.addEventListener("click", closeMobileMenu));
 
-    document.querySelectorAll(".video-shell").forEach(shell => {
+    document.querySelectorAll(".video-shell, .opening-video-shell").forEach(shell => {
       const video = shell.querySelector("video");
       const button = shell.querySelector(".video-play");
       video.controls = false;
