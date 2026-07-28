@@ -169,16 +169,6 @@
     .engineering-media .technical-drawing { object-fit: contain; background: #fff; }
     .engineering-media figcaption { padding: 12px 14px; color: var(--muted); font-size: .76rem; }
 
-    .gallery { margin-top: 48px; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 250px; gap: 12px; }
-    .gallery figure { margin: 0; position: relative; overflow: hidden; background: var(--navy-3); }
-    .gallery figure:nth-child(1) { grid-column: span 7; grid-row: span 2; }
-    .gallery figure:nth-child(2) { grid-column: span 5; }
-    .gallery figure:nth-child(3) { grid-column: span 5; }
-    .gallery figure:nth-child(4), .gallery figure:nth-child(5), .gallery figure:nth-child(6) { grid-column: span 4; }
-    .gallery img { height: 100%; object-fit: cover; transition: transform .5s ease; }
-    .gallery figure:hover img { transform: scale(1.025); }
-    .gallery figcaption { position: absolute; inset: auto 0 0; padding: 28px 18px 14px; background: linear-gradient(transparent, rgba(4,18,29,.9)); color: var(--white); font-size: .8rem; }
-
     .amenity-showcase { margin-top: 48px; display: grid; gap: 24px; }
     .amenity-block { padding: 30px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
     .amenity-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .9fr); gap: 36px; align-items: end; margin-bottom: 24px; }
@@ -186,8 +176,8 @@
     .amenity-heading p { color: var(--muted); }
     .amenity-heading strong { color: var(--white); }
     .amenity-gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: 260px; gap: 12px; }
-    .amenity-gallery figure { position: relative; margin: 0; overflow: hidden; background: var(--navy-3); }
-    .amenity-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .amenity-gallery figure { position: relative; margin: 0; overflow: hidden; background: #04121d; }
+    .amenity-gallery img { width: 100%; height: 100%; object-fit: contain; transition: transform .5s ease; }
     .amenity-gallery figure:hover img { transform: scale(1.025); }
     .amenity-gallery figcaption { position: absolute; inset: auto 0 0; padding: 38px 16px 13px; background: linear-gradient(transparent, rgba(4,18,29,.92)); color: var(--white); font-size: .76rem; }
     .amenity-gallery-acoustic figure { grid-column: span 6; grid-row: span 2; }
@@ -310,8 +300,6 @@
       .finance-row > div { padding: 16px 12px; }
       .margin-callout { align-items: flex-start; flex-direction: column; }
       .margin-callout strong { white-space: normal; font-size: 2.05rem; }
-      .gallery { display: grid; grid-template-columns: 1fr; grid-auto-rows: 300px; }
-      .gallery figure:nth-child(n) { grid-column: auto; grid-row: auto; }
       .amenity-block { padding: 18px; }
       .amenity-heading { grid-template-columns: 1fr; gap: 10px; }
       .amenity-gallery { grid-template-columns: 1fr; grid-auto-rows: 390px; }
@@ -636,15 +624,6 @@
           </article>
         </div>
 
-        <div class="gallery">
-          <figure class="reveal"><img src="assets/dossie-real/piscina-interna.jpg" alt="Piscina interna real do SPA"><figcaption>Piscina interna e elementos arquitetônicos do SPA</figcaption></figure>
-          <figure class="reveal"><img src="assets/dossie-real/corredor-spa.jpg" alt="Corredor interno real do SPA"><figcaption>Circulação interna do SPA</figcaption></figure>
-          <figure class="reveal"><img src="assets/dossie-real/tratamento-spa.jpg" alt="Atendimento real no SPA"><figcaption>Operação de tratamento e bem-estar</figcaption></figure>
-          <figure class="reveal"><img src="assets/dossie-real/complexo-piscina-evento.jpg" alt="Piscina externa e evento real no complexo"><figcaption>Piscina externa e operação integrada</figcaption></figure>
-          <figure class="reveal"><img src="assets/dossie-real/sala-piano.jpg" alt="Sala real com piano e vista para as montanhas"><figcaption>Centro acústico e área para experiências</figcaption></figure>
-          <figure class="reveal"><img src="assets/dossie-real/sala-tratamento.jpg" alt="Sala real de tratamento"><figcaption>Uma das salas de tratamento do SPA</figcaption></figure>
-        </div>
-
         <div class="amenity-showcase">
           <article class="amenity-block reveal">
             <div class="amenity-heading">
@@ -670,20 +649,8 @@
             </div>
             <div class="amenity-gallery amenity-gallery-spa">
               <figure>
-                <img src="assets/bem-estar/sala-tratamento.jpeg" alt="Sala privativa de tratamento do SPA">
-                <figcaption>Sala privativa de tratamento</figcaption>
-              </figure>
-              <figure>
                 <img src="assets/bem-estar/piscina-interna-spa.jpeg" alt="Piscina interna do SPA com cascata e colunas decorativas">
                 <figcaption>Piscina interna com cascata</figcaption>
-              </figure>
-              <figure>
-                <img src="assets/bem-estar/sala-banheira-tratamento.jpeg" alt="Sala do SPA com banheira e maca de tratamento">
-                <figcaption>Sala com banheira e maca de tratamento</figcaption>
-              </figure>
-              <figure>
-                <img src="assets/bem-estar/corredor-salas.jpeg" alt="Corredor de acesso às salas privativas do SPA">
-                <figcaption>Acesso às salas privativas</figcaption>
               </figure>
               <figure>
                 <img src="assets/bem-estar/circulacao-spa.jpeg" alt="Área de circulação e convivência do SPA">
