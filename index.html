@@ -124,6 +124,7 @@
     .operation-photo img { height: 100%; object-fit: cover; }
     .operation-photo.contain { height: auto; aspect-ratio: 16 / 9; background: #04121d; }
     .operation-photo.contain img { object-fit: contain; }
+    .operation-photo.contain.ratio-3x2 { aspect-ratio: 3 / 2; }
     .operation-body { padding: 38px; display: grid; grid-template-columns: .85fr 1.15fr; gap: 45px; }
     .operation h3 { color: var(--gold-light); font-size: 2.3rem; }
     .company-note { margin-top: 18px; padding: 14px 16px; border-left: 3px solid var(--gold); background: rgba(211,171,89,.08); color: #e7edf0; }
@@ -481,7 +482,7 @@
         </article>
 
         <article class="operation reveal">
-          <div class="operation-photo contain">
+          <div class="operation-photo contain ratio-3x2">
             <img src="assets/apresentacao/emagre-spa-piscina-noturna.jpeg" alt="Vista noturna completa da piscina e do complexo Emagre SPA">
           </div>
           <div class="operation-body">
