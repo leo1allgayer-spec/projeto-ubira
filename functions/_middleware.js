@@ -112,33 +112,36 @@ function loginPage({ error = "", unavailable = false } = {}) {
       filter:blur(18px);transform:scale(1.08)}
     .background:before,.background:after{content:"";position:absolute;border:1px solid rgba(211,171,89,.25);background:rgba(255,255,255,.035)}
     .background:before{inset:18% 8% 54% 38%}.background:after{inset:52% 42% 12% 8%}
-    main{position:relative;width:min(460px,100%);padding:42px;border:1px solid rgba(211,171,89,.5);background:rgba(4,18,29,.9);box-shadow:0 30px 80px rgba(0,0,0,.45);backdrop-filter:blur(18px)}
+    main{position:relative;width:min(480px,100%);padding:48px;border:1px solid rgba(211,171,89,.52);background:linear-gradient(145deg,rgba(8,31,48,.96),rgba(3,17,28,.97));box-shadow:0 34px 90px rgba(0,0,0,.52);backdrop-filter:blur(18px)}
+    main:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent)}
     .brand{color:var(--gold2);font-family:Georgia,serif;font-size:clamp(1.25rem,5vw,1.7rem);font-weight:700;letter-spacing:.08em}
-    .eyebrow{margin-top:34px;color:var(--gold2);font-size:.7rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
+    .seal{display:grid;place-items:center;width:54px;height:54px;margin-top:34px;border:1px solid rgba(211,171,89,.55);border-radius:50%;color:var(--gold2);font-size:1.45rem;background:rgba(211,171,89,.07)}
+    .eyebrow{margin-top:18px;color:var(--gold2);font-size:.7rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
     h1{margin:10px 0 12px;font-family:Georgia,serif;font-size:clamp(2rem,8vw,3rem);line-height:1.05}
     p{margin:0;color:var(--muted);line-height:1.55}
     form{display:grid;gap:17px;margin-top:30px}
     label{display:grid;gap:7px;color:#dce3e7;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-    input{width:100%;height:50px;padding:0 15px;border:1px solid rgba(211,171,89,.38);border-radius:0;background:rgba(255,255,255,.055);color:#fff;font-size:1rem;outline:none}
+    input{width:100%;height:56px;padding:0 17px;border:1px solid rgba(211,171,89,.38);border-radius:0;background:rgba(255,255,255,.055);color:#fff;font-size:1.05rem;outline:none}
     input:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(211,171,89,.12)}
-    button{height:52px;border:1px solid var(--gold);background:var(--gold);color:#2e220d;font-weight:800;letter-spacing:.09em;text-transform:uppercase;cursor:pointer}
+    button{height:56px;border:1px solid var(--gold);background:linear-gradient(90deg,var(--gold),var(--gold2));color:#2e220d;font-weight:800;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:filter .2s ease,transform .2s ease}
+    button:hover{filter:brightness(1.06);transform:translateY(-1px)}
     button:disabled{cursor:not-allowed;opacity:.45}
     .message{margin-top:18px;padding:12px 14px;border-left:3px solid var(--gold);background:rgba(211,171,89,.09);color:#f0dcae;font-size:.86rem}
     .privacy{margin-top:22px;color:#7f909b;font-size:.72rem}
-    @media(max-width:520px){main{padding:32px 24px}.brand{letter-spacing:.045em}}
+    @media(max-width:520px){body{padding:16px}main{padding:36px 25px}.brand{letter-spacing:.045em}.seal{margin-top:28px}}
   </style>
 </head>
 <body>
   <div class="background" aria-hidden="true"></div>
   <main>
     <div class="brand">AMETISTA PARTICIPAÇÕES S.A.</div>
+    <div class="seal" aria-hidden="true">◆</div>
     <div class="eyebrow">Apresentação confidencial</div>
     <h1>Acesso reservado</h1>
-    <p>Entre com as credenciais fornecidas para visualizar o memorando de investimento e seus documentos.</p>
+    <p>Informe a senha de acesso para consultar o memorando de investimento e os documentos reservados.</p>
     ${message ? `<div class="message" role="alert">${message}</div>` : ""}
     <form method="post" action="/auth/login">
-      <label>Usuário<input name="username" type="text" autocomplete="username" required ${disabled}></label>
-      <label>Senha<input name="password" type="password" autocomplete="current-password" required ${disabled}></label>
+      <label>Senha de acesso<input name="password" type="password" autocomplete="current-password" placeholder="Digite a senha" autofocus required ${disabled}></label>
       <button type="submit" ${disabled}>Acessar apresentação</button>
     </form>
     <div class="privacy">A sessão é protegida e expira automaticamente após 8 horas.</div>
@@ -153,7 +156,7 @@ function loginPage({ error = "", unavailable = false } = {}) {
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const configured = Boolean(env.SITE_USERNAME && env.SITE_PASSWORD && env.SESSION_SECRET);
+  const configured = Boolean(env.SITE_PASSWORD && env.SESSION_SECRET);
 
   if (url.pathname === "/logout") {
     return redirect("/", `${COOKIE_NAME}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`);
@@ -172,15 +175,11 @@ export async function onRequest(context) {
     }
 
     const formData = await request.formData();
-    const username = String(formData.get("username") || "");
     const password = String(formData.get("password") || "");
-    const [usernameValid, passwordValid] = await Promise.all([
-      safeCompare(username, env.SITE_USERNAME),
-      safeCompare(password, env.SITE_PASSWORD),
-    ]);
+    const passwordValid = await safeCompare(password, env.SITE_PASSWORD);
 
-    if (!usernameValid || !passwordValid) {
-      return loginPage({ error: "Usuário ou senha inválidos." });
+    if (!passwordValid) {
+      return loginPage({ error: "Senha inválida. Verifique e tente novamente." });
     }
 
     const session = await createSession(env.SESSION_SECRET);

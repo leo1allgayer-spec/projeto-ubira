@@ -969,6 +969,7 @@
       </div>
     </section>
 
+    <template id="data-room-template">
     <section class="section section-dark closing data-room-source" id="data-room-source">
       <div class="container">
         <div class="eyebrow">Ambiente de diligência</div>
@@ -1161,6 +1162,7 @@
         </article>
       </div>
     </section>
+    </template>
 
     <section class="section section-deep closing" id="sintese">
       <div class="container">
@@ -1206,6 +1208,20 @@
   </footer>
 
   <script>
+    const dataRoomTemplate = document.querySelector("#data-room-template");
+    if (dataRoomTemplate) {
+      const dataRoomContent = dataRoomTemplate.content.cloneNode(true);
+      dataRoomContent.querySelectorAll(".data-room-file-view iframe, .data-room-file-view img").forEach(viewer => {
+        const source = viewer.getAttribute("src");
+        if (source) {
+          viewer.dataset.src = source;
+          viewer.removeAttribute("src");
+        }
+      });
+      document.querySelector("main").appendChild(dataRoomContent);
+      dataRoomTemplate.remove();
+    }
+
     const chapterDistribution = {
       imovel: [
         "#oportunidade",
@@ -1240,6 +1256,23 @@
       });
     });
     document.querySelector("#data-room-source")?.remove();
+
+    document.querySelectorAll(".data-room-file").forEach(file => {
+      const viewer = file.querySelector(".data-room-file-view iframe, .data-room-file-view img");
+      if (!viewer) return;
+
+      const source = viewer.getAttribute("src");
+      if (source) {
+        viewer.dataset.src = source;
+        viewer.removeAttribute("src");
+      }
+
+      file.addEventListener("toggle", () => {
+        if (file.open && !viewer.getAttribute("src")) {
+          viewer.setAttribute("src", viewer.dataset.src);
+        }
+      });
+    });
 
     const navLinks = [...document.querySelectorAll(".nav-link, .chapter-link")];
     const sections = [...new Set(navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean))];

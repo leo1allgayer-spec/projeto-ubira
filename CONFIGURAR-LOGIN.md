@@ -9,16 +9,15 @@ No painel do Cloudflare:
 1. Abra **Workers & Pages**.
 2. Selecione o projeto **projeto-ubira**.
 3. Acesse **Settings > Variables and Secrets**.
-4. Adicione as três variáveis abaixo no ambiente de **Production** e marque todas como **Encrypt**:
+4. Adicione as duas variáveis abaixo no ambiente de **Production** e marque todas como **Encrypt**:
 
-   - `SITE_USERNAME`: usuário compartilhado para acessar o site.
    - `SITE_PASSWORD`: senha forte para acessar o site.
    - `SESSION_SECRET`: chave aleatória longa, diferente da senha, com pelo menos 32 caracteres.
 
 5. Salve as variáveis.
 6. Faça um novo deploy do projeto para que os segredos sejam carregados.
 
-Enquanto as três variáveis não estiverem configuradas, o site permanecerá fechado e mostrará a mensagem de configuração.
+Enquanto as duas variáveis não estiverem configuradas, o site permanecerá fechado e mostrará a mensagem de configuração. A antiga variável `SITE_USERNAME` não é mais utilizada e pode ser removida do painel.
 
 ## Funcionamento
 
