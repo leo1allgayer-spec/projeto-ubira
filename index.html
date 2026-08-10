@@ -388,7 +388,7 @@
           <p class="opening-film-copy">Uma visão inicial do complexo, de sua arquitetura e da experiência construída em meio à Mata Atlântica.</p>
         </div>
         <div class="opening-video-shell reveal">
-          <video autoplay muted playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" poster="assets/apresentacao/video-abertura-poster.jpg">
+          <video muted playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" poster="assets/apresentacao/video-abertura-poster.jpg">
             <source src="assets/apresentacao/video-abertura.mp4" type="video/mp4">
           </video>
           <button class="video-play" type="button" aria-label="Reproduzir vídeo de apresentação do empreendimento"></button>
@@ -1297,6 +1297,9 @@
     document.querySelectorAll(".video-shell, .opening-video-shell").forEach(shell => {
       const video = shell.querySelector("video");
       const button = shell.querySelector(".video-play");
+      video.autoplay = false;
+      video.pause();
+      video.currentTime = 0;
       video.controls = false;
       video.disablePictureInPicture = true;
       video.disableRemotePlayback = true;
