@@ -252,6 +252,38 @@
     .data-category { padding: 25px; border: 1px solid var(--line); background: rgba(255,255,255,.03); }
     .data-category strong { display: block; color: var(--gold-light); }
     .data-category span { display: block; margin-top: 8px; color: var(--muted); font-size: .82rem; }
+    .chapter-stage { scroll-margin-top: var(--nav-h); background: var(--navy); }
+    .chapter-stage:nth-of-type(even) { background: #061927; }
+    .chapter-stage-head { position: relative; padding: clamp(76px, 9vw, 130px) 0 clamp(54px, 7vw, 92px); overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(120deg, #04121d 0%, #0a2638 100%); }
+    .chapter-stage-head::after { content: attr(data-number); position: absolute; right: 4vw; top: 50%; transform: translateY(-52%); color: rgba(215,175,86,.075); font: 700 clamp(8rem, 20vw, 18rem)/1 "Playfair Display", serif; pointer-events: none; }
+    .chapter-stage-kicker { color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .chapter-stage-title { position: relative; z-index: 1; max-width: 900px; margin-top: 14px; color: var(--gold-light); font: 700 clamp(2.5rem, 6vw, 5.6rem)/.98 "Playfair Display", serif; text-wrap: balance; }
+    .chapter-stage-lead { position: relative; z-index: 1; max-width: 780px; margin-top: 24px; color: #c8d2d8; font-size: clamp(1rem, 1.5vw, 1.2rem); }
+    .chapter-content > .data-room-topic { width: min(100% - 48px, var(--max)); margin: clamp(64px, 8vw, 110px) auto; }
+    .data-room-source { display: none; }
+    .data-room-topic { margin-top: 48px; padding: clamp(24px, 4vw, 48px); border: 1px solid var(--line); border-top: 3px solid var(--gold); background: rgba(255,255,255,.025); text-align: left; }
+    .data-room-topic-head { display: grid; grid-template-columns: minmax(280px,.36fr) minmax(0,1fr); gap: clamp(48px, 5vw, 76px); align-items: start; }
+    .data-room-topic-number { color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .data-room-topic h3 { max-width: 100%; margin-top: 14px; color: var(--gold-light); font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.04; overflow-wrap: normal; word-break: normal; hyphens: none; text-wrap: balance; }
+    .data-room-context { display: grid; gap: 16px; color: #d4dde2; }
+    .data-room-context p { margin: 0; }
+    .document-group { margin-top: 46px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .document-group h4 { color: var(--gold-light); font: 600 1.25rem/1.25 "Playfair Display", serif; }
+    .document-group-description { max-width: 760px; margin: 9px 0 0; color: var(--muted); font-size: .88rem; }
+    .document-list { margin-top: 18px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+    .data-room-file { border: 1px solid var(--line); background: #071c2b; }
+    .data-room-file[open] { position: fixed; inset: 0; z-index: 2000; display: block; width: 100vw; height: 100dvh; overflow: hidden; border: 0; background: #041521; }
+    .data-room-file summary { min-height: 100%; cursor: pointer; list-style: none; padding: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--white); }
+    .data-room-file summary::-webkit-details-marker { display: none; }
+    .data-room-file summary::after { content: "Abrir documento +"; margin-top: auto; padding-top: 18px; color: var(--gold-light); font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .data-room-file[open] summary { min-height: 72px; height: 72px; padding: 12px 24px; border-bottom: 1px solid var(--line); flex-direction: row; align-items: center; flex-wrap: wrap; }
+    .data-room-file[open] summary::after { content: "Fechar documento −"; }
+    .data-room-file-title { font-weight: 700; }
+    .data-room-file-meta { color: var(--muted); font-size: .76rem; }
+    .data-room-file-view { padding: 14px; }
+    .data-room-file[open] .data-room-file-view { position: absolute; inset: 72px 0 0; min-height: 0; padding: 0; display: flex; align-items: stretch; justify-content: center; background: #262626; }
+    .data-room-file-view iframe { display: block; width: 100%; height: 100%; min-height: 0; border: 0; background: #fff; }
+    .data-room-file-view img { width: 100%; height: 100%; max-height: none; object-fit: contain; background: #262626; }
 
     @media (max-width: 1400px) {
       .chapter-nav { display: none; }
@@ -267,6 +299,8 @@
       .hero-photo { min-height: 620px; }
       .split, .split-wide { grid-template-columns: 1fr; }
       .map-grid { grid-template-columns: 1fr; }
+      .data-room-topic-head { grid-template-columns: 1fr; gap: 30px; }
+      .data-room-topic h3 { max-width: 100%; }
       .stat-grid { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: 0; }
       .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -307,6 +341,10 @@
       .amenity-heading { grid-template-columns: 1fr; gap: 10px; }
       .amenity-gallery { grid-template-columns: 1fr; grid-auto-rows: 390px; }
       .amenity-gallery figure:nth-child(n) { grid-column: auto; grid-row: auto; }
+      .data-room-topic-head, .document-list { grid-template-columns: 1fr; }
+      .data-room-topic-head { gap: 24px; }
+      .data-room-file[open] summary { padding: 12px 16px; }
+      .chapter-content > .data-room-topic { width: min(100% - 28px, var(--max)); }
       .document-reader iframe { height: 560px; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .footer-social { text-align: left; }
@@ -323,28 +361,22 @@
   <div class="progress-track" aria-hidden="true"><span class="progress-bar"></span></div>
   <nav class="topbar" aria-label="Navegação principal">
     <div class="container nav-inner">
-      <a class="brand" href="#oportunidade">AMETISTA PARTICIPAÇÕES S.A.</a>
+      <a class="brand" href="#etapa-imovel">AMETISTA PARTICIPAÇÕES S.A.</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu">
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links" id="main-menu">
-        <a class="nav-link active" href="#oportunidade">Oportunidade</a>
-        <a class="nav-link" href="#ativo">O ativo</a>
-        <a class="nav-link" href="#negocios">O negócio</a>
-        <a class="nav-link" href="#transacao">Transação</a>
-        <a class="nav-link" href="#proximos-passos">Próximos passos</a>
-        <a class="nav-link" href="#data-room">Data Room</a>
+        <a class="nav-link active" href="#etapa-imovel">Imóvel e documentação</a>
+        <a class="nav-link" href="#etapa-historia">História e obra</a>
+        <a class="nav-link" href="#etapa-financeiro">Financeiro e operação</a>
         <a class="logout-link" href="/logout">Sair</a>
       </div>
     </div>
   </nav>
   <aside class="chapter-nav" aria-label="Capítulos da apresentação">
-    <a class="chapter-link active" href="#oportunidade">Oportunidade</a>
-    <a class="chapter-link" href="#ativo">O ativo</a>
-    <a class="chapter-link" href="#negocios">O negócio</a>
-    <a class="chapter-link" href="#transacao">Transação</a>
-    <a class="chapter-link" href="#proximos-passos">FAQ</a>
-    <a class="chapter-link" href="#data-room">Data Room</a>
+    <a class="chapter-link active" href="#etapa-imovel">01 · Imóvel</a>
+    <a class="chapter-link" href="#etapa-historia">02 · História e obra</a>
+    <a class="chapter-link" href="#etapa-financeiro">03 · Financeiro</a>
   </aside>
 
   <main>
@@ -356,12 +388,45 @@
           <p class="opening-film-copy">Uma visão inicial do complexo, de sua arquitetura e da experiência construída em meio à Mata Atlântica.</p>
         </div>
         <div class="opening-video-shell reveal">
-          <video playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" poster="assets/apresentacao/video-abertura-poster.jpg">
+          <video autoplay muted playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" poster="assets/apresentacao/video-abertura-poster.jpg">
             <source src="assets/apresentacao/video-abertura.mp4" type="video/mp4">
           </video>
           <button class="video-play" type="button" aria-label="Reproduzir vídeo de apresentação do empreendimento"></button>
         </div>
       </div>
+    </section>
+
+    <section class="chapter-stage" id="etapa-imovel" aria-labelledby="etapa-imovel-title">
+      <header class="chapter-stage-head" data-number="01">
+        <div class="container">
+          <div class="chapter-stage-kicker">Etapa 01</div>
+          <h2 class="chapter-stage-title" id="etapa-imovel-title">Imóvel e documentação registral</h2>
+          <p class="chapter-stage-lead">Patrimônio, localização, situação fundiária, projetos aprovados, avaliação e documentação que sustentam o ativo imobiliário.</p>
+        </div>
+      </header>
+      <div class="chapter-content" data-chapter-target="imovel"></div>
+    </section>
+
+    <section class="chapter-stage" id="etapa-historia" aria-labelledby="etapa-historia-title">
+      <header class="chapter-stage-head" data-number="02">
+        <div class="container">
+          <div class="chapter-stage-kicker">Etapa 02</div>
+          <h2 class="chapter-stage-title" id="etapa-historia-title">História, arquitetura e obra</h2>
+          <p class="chapter-stage-lead">Trajetória da construção, engenharia, materiais, infraestrutura, ambientes especializados e laudos técnicos do complexo.</p>
+        </div>
+      </header>
+      <div class="chapter-content" data-chapter-target="historia"></div>
+    </section>
+
+    <section class="chapter-stage" id="etapa-financeiro" aria-labelledby="etapa-financeiro-title">
+      <header class="chapter-stage-head" data-number="03">
+        <div class="container">
+          <div class="chapter-stage-kicker">Etapa 03</div>
+          <h2 class="chapter-stage-title" id="etapa-financeiro-title">Informações financeiras e operacionais</h2>
+          <p class="chapter-stage-lead">Modelo de negócio, operações complementares, desempenho, projeções, oportunidades de crescimento e demonstrativos financeiros.</p>
+        </div>
+      </header>
+      <div class="chapter-content" data-chapter-target="financeiro"></div>
     </section>
 
     <header class="hero" id="oportunidade">
@@ -374,7 +439,7 @@
           <span>Preço de aquisição apresentado no dossiê, com desconto real superior a 60% sobre o custo estimado de reposição.</span>
         </div>
         <div class="hero-actions">
-          <a class="cta cta-primary" href="#data-room">Solicitar acesso ao Data Room</a>
+          <a class="cta cta-primary" href="#documentos-imovel">Consultar documentos do imóvel</a>
           <a class="cta" href="#proximos-passos">Conhecer o processo</a>
         </div>
       </div>
@@ -448,7 +513,7 @@
       </div>
     </section>
 
-    <section class="section section-dark">
+    <section class="section section-dark" id="operacoes">
       <div class="container">
         <div class="eyebrow">Unidades de negócio</div>
         <h2 class="section-title">Receitas complementares no mesmo complexo</h2>
@@ -740,7 +805,7 @@
             <div class="document-reader-body">
               <div class="eyebrow">Documentação protegida</div>
               <p class="section-lead">Os documentos completos — incluindo laudo técnico, avaliação mercadológica, matrículas, DREs e projetos — integram o Data Room e são disponibilizados após qualificação e assinatura de NDA.</p>
-              <div class="document-actions"><a class="button-link" href="#data-room">Ver estrutura do Data Room</a></div>
+              <div class="document-actions"><a class="button-link" href="#documentos-imovel">Ver documentação do imóvel</a></div>
             </div>
           </div>
         </div>
@@ -805,7 +870,7 @@
       </div>
     </section>
 
-    <section class="section section-mid">
+    <section class="section section-mid" id="crescimento">
       <div class="container">
         <div class="split">
           <div class="photo-frame reveal">
@@ -904,27 +969,200 @@
       </div>
     </section>
 
-    <section class="section section-dark closing" id="data-room">
+    <section class="section section-dark closing data-room-source" id="data-room-source">
       <div class="container">
         <div class="eyebrow">Ambiente de diligência</div>
         <h2 class="section-title">Data Room organizado para uma análise objetiva</h2>
-        <p class="section-lead">O acesso aos documentos integrais deve ocorrer em uma plataforma profissional de VDR, após qualificação e NDA. Esta página pública apresenta apenas o resumo executivo.</p>
-        <div class="data-categories">
-          <div class="data-category"><strong>01 · Financeiro</strong><span>DREs, balanços, fluxo de caixa histórico e projetado.</span></div>
-          <div class="data-category"><strong>02 · Jurídico e societário</strong><span>Estatuto, certidões, organograma e contratos.</span></div>
-          <div class="data-category"><strong>03 · Imobiliário</strong><span>Matrículas, escrituras, averbações e remembramentos.</span></div>
-          <div class="data-category"><strong>04 · Engenharia</strong><span>Laudo técnico, plantas e projetos estruturais.</span></div>
-          <div class="data-category"><strong>05 · Licenciamento</strong><span>Licença ambiental, bombeiros, alvarás e outorgas.</span></div>
-          <div class="data-category"><strong>06 · Operação e expansão</strong><span>Avaliação mercadológica, inventário, KPIs e projeto de suítes.</span></div>
-        </div>
-        <div class="hero-actions" style="justify-content:center">
-          <a class="cta cta-primary" href="#data-room" aria-label="Data Room em fase de configuração">Data Room em configuração</a>
-        </div>
-        <p class="fine-print" style="margin-top:18px">A ativação do acesso depende da contratação do VDR, definição do NDA e configuração do fluxo de qualificação. Nenhum acesso é concedido automaticamente por este site.</p>
+        <p class="section-lead">Cada conjunto documental é precedido por um texto de contexto, seguido da relação organizada dos documentos e do acesso aos respectivos arquivos.</p>
+
+        <article class="data-room-topic reveal" id="documentos-imovel" aria-labelledby="data-room-imovel-title">
+          <div class="data-room-topic-head">
+            <div>
+              <div class="data-room-topic-number">Bloco 01 · Imóvel</div>
+              <h3 id="data-room-imovel-title">Imóvel e documentação registral</h3>
+            </div>
+            <div class="data-room-context">
+              <p>O complexo está edificado sobre uma propriedade de <strong>40.718,28 m²</strong>, reunida ao longo de mais de três décadas a partir de nove escrituras. Cinco delas correspondem a áreas com escritura definitiva - A, J, C, D e C -, sendo que quatro (J, C, D e C) foram formalmente remembradas no Registro de Imóveis, originando a Área K (10.298,40 m²), onde está implantado o núcleo principal do hotel e do spa. As quatro escrituras restantes - B, B1, B2 e F, totalizando 18.622,88 m² - encontram-se sob posse mansa, pacífica e contínua há mais de 30 anos.</p>
+              <p>A conclusão do remembramento da Área K envolveu a extinção formal de uma antiga servidão de abastecimento de água, resolvida com a construção de uma estrutura independente destinada ao atendimento da vizinhança. Com isso, a propriedade também deixou de integrar o antigo Condomínio Walter Zabel, passando a ter sistema próprio de abastecimento, plenamente compatibilizado hoje entre o Registro de Imóveis e o cadastro municipal.</p>
+              <p>A edificação original possuía 523,78 m², ampliados para <strong>2.016,84 m² de área averbada</strong> após projeto aprovado pela Prefeitura de Nova Friburgo e pela Secretaria Municipal de Meio Ambiente. Estruturas adicionais - áreas de apoio, apartamentos auxiliares, armazenamento e baias - já foram incorporadas fisicamente ao complexo e seguem o rito administrativo de averbação após vistoria final.</p>
+              <p>Um ponto relevante da situação registral: a propriedade está localizada em área ambientalmente protegida, onde atualmente não são emitidas novas licenças para empreendimentos dessa natureza. O complexo pode crescer apenas porque já existe edificação regularmente licenciada antes da legislação ambiental vigente - um direito adquirido que sustenta o projeto mais recente de ampliação, de 15 novas suítes, das quais 5 já foram concluídas.</p>
+            </div>
+          </div>
+
+          <section class="document-group" aria-labelledby="grupo-planta">
+            <h4 id="grupo-planta">Planta de situação da propriedade</h4>
+            <div class="document-list">
+              <details class="data-room-file">
+                <summary><span class="data-room-file-title">Planta de situação</span><span class="data-room-file-meta">PDF · 1 página</span></summary>
+                <div class="data-room-file-view"><iframe loading="lazy" title="Planta de situação da propriedade" src="assets/data-room/imovel/planta-de-situacao.pdf"></iframe></div>
+              </details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-escrituras">
+            <h4 id="grupo-escrituras">Escrituras originais das áreas correspondentes</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Escritura - Área A</span><span class="data-room-file-meta">PDF · 2 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Escritura da Área A" src="assets/data-room/imovel/escritura-area-a.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Escritura - Áreas J e C</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Escritura das Áreas J e C" src="assets/data-room/imovel/escritura-areas-j-c.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Escritura - Área D</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Escritura da Área D" src="assets/data-room/imovel/escritura-area-d.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-registros">
+            <h4 id="grupo-registros">Matrículas e certidões do Registro de Imóveis</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Registro de imóvel - Área A</span><span class="data-room-file-meta">PDF · 2 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Registro de imóvel da Área A" src="assets/data-room/imovel/registro-area-a.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Registro de imóvel - Área D</span><span class="data-room-file-meta">PDF · 2 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Registro de imóvel da Área D" src="assets/data-room/imovel/registro-area-d.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Registro de imóvel - Áreas J e C</span><span class="data-room-file-meta">PDF · 2 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Registro de imóvel das Áreas J e C" src="assets/data-room/imovel/registro-areas-j-c.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-remembramento">
+            <h4 id="grupo-remembramento">Certidão registral do remembramento que originou a Área K</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Certidão de remembramento - Página 01</span><span class="data-room-file-meta">Imagem · JPEG</span></summary><div class="data-room-file-view"><img loading="lazy" src="assets/data-room/imovel/certidao-remembramento-01.jpeg" alt="Primeira página da certidão registral do remembramento"></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Certidão de remembramento - Página 02</span><span class="data-room-file-meta">Imagem · JPEG</span></summary><div class="data-room-file-view"><img loading="lazy" src="assets/data-room/imovel/certidao-remembramento-02.jpeg" alt="Segunda página da certidão registral do remembramento"></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-projeto-original">
+            <h4 id="grupo-projeto-original">Projeto arquitetônico originalmente aprovado para implantação do hotel</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 01 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 01 de 08" src="assets/data-room/imovel/projeto-original-01.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 02 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 02 de 08" src="assets/data-room/imovel/projeto-original-02.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 03 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 03 de 08" src="assets/data-room/imovel/projeto-original-03.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 04 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 04 de 08" src="assets/data-room/imovel/projeto-original-04.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 05 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 05 de 08" src="assets/data-room/imovel/projeto-original-05.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 06 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 06 de 08" src="assets/data-room/imovel/projeto-original-06.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 07 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 07 de 08" src="assets/data-room/imovel/projeto-original-07.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Projeto original - Planta 08 de 08</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto arquitetônico original - Planta 08 de 08" src="assets/data-room/imovel/projeto-original-08.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-averbacao-obra">
+            <h4 id="grupo-averbacao-obra">Documento de averbação da obra na Secretaria de Meio Ambiente e Prefeitura Municipal de Nova Friburgo</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Certidão de averbação da obra</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Certidão de averbação da obra" src="assets/data-room/imovel/certidao-averbacao-obra.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-ampliacao">
+            <h4 id="grupo-ampliacao">Projeto mais recente de ampliação - 15 suítes</h4>
+            <p class="document-group-description">Projeto aprovado pela Prefeitura Municipal de Nova Friburgo.</p>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Ampliação de 15 suítes - Prancha 01 de 02</span><span class="data-room-file-meta">Imagem · JPEG</span></summary><div class="data-room-file-view"><img loading="lazy" src="assets/data-room/imovel/ampliacao-15-suites-01.jpeg" alt="Primeira prancha do projeto mais recente de ampliação de 15 suítes"></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Ampliação de 15 suítes - Prancha 02 de 02</span><span class="data-room-file-meta">Imagem · JPEG</span></summary><div class="data-room-file-view"><img loading="lazy" src="assets/data-room/imovel/ampliacao-15-suites-02.jpeg" alt="Segunda prancha do projeto mais recente de ampliação de 15 suítes"></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-avaliacao-mercadologica">
+            <h4 id="grupo-avaliacao-mercadologica">Avaliação mercadológica</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Avaliação mercadológica do imóvel</span><span class="data-room-file-meta">PDF · 11 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Avaliação mercadológica do imóvel" src="assets/data-room/imovel/avaliacao-mercadologica.pdf"></iframe></div></details>
+            </div>
+          </section>
+        </article>
+
+        <article class="data-room-topic reveal" id="documentos-historia" aria-labelledby="data-room-historia-title">
+          <div class="data-room-topic-head">
+            <div>
+              <div class="data-room-topic-number">Bloco 02 · História e obra</div>
+              <h3 id="data-room-historia-title">História, arquitetura e obra</h3>
+            </div>
+            <div class="data-room-context">
+              <p>Erguido a 1.250 metros de altitude, no topo da única montanha isolada em um vale cercado por outras elevações, o complexo ocupa uma posição topográfica rara, com vista de 360 graus sem obstruções. Essa condição definiu o conceito central do projeto: um espaço fechado o suficiente para proteger da chuva, mas aberto o bastante para nunca esconder a paisagem.</p>
+              <p>A construção teve início em abril de 2004 e foi concluída no começo de 2011 - sete anos de trabalho contínuo, com uma média de 50 profissionais, executado inteiramente à mão devido à impossibilidade de acesso de máquinas pesadas na região. A etapa mais crítica foi a contenção da encosta: um estudo geotécnico completo, conduzido sob orientação do engenheiro estrutural Marcelo Martins, revelou a necessidade de ancorar a estrutura na rocha firme, abaixo de uma camada de pedra-sabão. A solução envolveu tubulões de um metro de diâmetro por oito metros de profundidade, ao longo de mais de 150 metros lineares de muro de contenção - trabalho que, somado à concretagem contínua, levou um ano e meio. A eficácia dessa engenharia foi comprovada nas fortes chuvas de janeiro de 2011, quando o terreno permaneceu estável enquanto parte da região sofria deslizamentos; uma vistoria técnica posterior confirmou a ausência de qualquer dano estrutural.</p>
+              <p>A concepção arquitetônica é creditada a Rogério Cato, que acompanhou pessoalmente a execução como diretor da Ametista Engenharia, construtora própria do empreendimento. O cálculo estrutural foi conduzido por Luiz Cláudio e o levantamento topográfico por José Chevrão; a documentação técnica mais recente registra também Newton Eduardo Apicelo de Matos (CAU A31520-6) como responsável técnico do laudo do imóvel. O projeto privilegiou materiais nobres - vidro blindex, granito local, mármore do Espírito Santo e madeiras de lei como ipê tabaco, ipê champagne e massaranduba - além de trabalho escultórico artesanal (esculturas em pedra, mosaicos, jardim suspenso de bonsais centenários).</p>
+              <p>Um dos diferenciais técnicos mais relevantes é o estúdio de som, projetado por Solon do Vale, com cerca de 200 m², sete salas de gravação totalmente isoladas entre si (paredes duplas com lã de rocha, estrutura flutuante sobre base de borracha), permitindo gravação ao vivo simultânea à mixagem sem vazamento de som - recurso raro no país. A infraestrutura do complexo inclui ainda captação própria de água mineral (poço artesiano e nascente, com 140.000 litros de reservação), sistema de aquecimento central sob medida, matriz energética híbrida (fotovoltaica e gerador de backup), cozinha industrial para até 120 convidados e via de acesso própria pavimentada em pedra.</p>
+              <p>Desde o início da operação em 2011, o complexo acumula 13 anos de atividade ininterrupta, sem qualquer intervenção estrutural corretiva. Cresceu de cerca de 20 para 40 suítes, com um novo projeto aprovado de 15 suítes adicionais - 5 já concluídas - que levará o total a 50 unidades.</p>
+            </div>
+          </div>
+
+          <section class="document-group" aria-labelledby="grupo-contencao-encosta">
+            <h4 id="grupo-contencao-encosta">Plantas técnicas da contenção da encosta</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Planta de contenção 01</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Planta técnica de contenção 01" src="assets/data-room/historia/contencao-01.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Planta de contenção e situação 02</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Planta técnica de contenção e situação 02" src="assets/data-room/historia/contencao-02.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-estudio-som">
+            <h4 id="grupo-estudio-som">Plantas do estúdio de som</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Estúdio - Planta geral 001/025</span><span class="data-room-file-meta">Imagem · WEBP</span></summary><div class="data-room-file-view"><img loading="lazy" src="assets/data-room/historia/estudio-planta-001.webp" alt="Planta geral 001/025 do estúdio de som"></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Estúdio A</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Planta do Estúdio A" src="assets/data-room/historia/estudio-a.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Estúdio C - Planta</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Planta do Estúdio C" src="assets/data-room/historia/estudio-c.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Estúdio B - Render A3</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Render A3 do Estúdio B" src="assets/data-room/historia/estudio-b-render.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Estúdio - Técnica R</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Documento técnico R do estúdio" src="assets/data-room/historia/estudio-tecnica-r.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">Estúdio - Montanha</span><span class="data-room-file-meta">PDF · 10 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Projeto Montanha do estúdio de som" src="assets/data-room/historia/estudio-montanha.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-laudo-tecnico-imovel">
+            <h4 id="grupo-laudo-tecnico-imovel">Laudo técnico do imóvel</h4>
+            <p class="document-group-description">Responsável técnico: Arq. Newton Eduardo Apicelo de Matos, CAU A31520-6.</p>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Laudo técnico Regenesis - Arq. Newton</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Laudo técnico do imóvel elaborado pelo Arquiteto Newton Eduardo Apicelo de Matos" src="assets/data-room/historia/laudo-tecnico-imovel.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-qualidade-agua">
+            <h4 id="grupo-qualidade-agua">Laudo de qualidade da água mineral</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Relatório 3596 - Regenesis</span><span class="data-room-file-meta">PDF · 2 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Laudo de qualidade da água mineral - Relatório 3596 Regenesis" src="assets/data-room/historia/laudo-qualidade-agua.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-corpo-bombeiros">
+            <h4 id="grupo-corpo-bombeiros">Laudo do Corpo de Bombeiros - AVCB</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Certificado de segurança contra incêndio</span><span class="data-room-file-meta">PDF · 1 página</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Certificado de segurança contra incêndio do Corpo de Bombeiros" src="assets/data-room/historia/certificado-corpo-bombeiros.pdf"></iframe></div></details>
+            </div>
+          </section>
+        </article>
+
+        <article class="data-room-topic reveal" id="documentos-financeiro" aria-labelledby="data-room-financeiro-title">
+          <div class="data-room-topic-head">
+            <div>
+              <div class="data-room-topic-number">Bloco 03 · Financeiro e operação</div>
+              <h3 id="data-room-financeiro-title">Informações financeiras e operacionais</h3>
+            </div>
+            <div class="data-room-context">
+              <p>O Espaço Regenesis e o Emagre Spa compartilham a mesma infraestrutura física e uma equipe operacional comum, o que permite diluir custos fixos entre as duas frentes de receita e reduzir a sazonalidade típica de operações hoteleiras isoladas. O Regenesis opera com reservas de longo prazo e agenda fechada com até um ano de antecedência; o Emagre Spa opera em regime de alta rotatividade, mantendo ocupação constante das acomodações. Essa combinação de um negócio mais estável com outro mais escalável funciona como equilíbrio operacional: quando um segmento desacelera sazonalmente, o outro tende a compensar.</p>
+              <p>Entre 2025 e a projeção de 2027, o faturamento consolidado cresce de <strong>R$ 4,20 milhões para R$ 5,42 milhões</strong>, com o lucro líquido subindo de <strong>R$ 1,28 milhão para R$ 2,33 milhões</strong> - uma evolução de margem líquida de <strong>30% para 43%</strong> no período.</p>
+              <p>A base de clientes construída ao longo de 13 anos de operação ininterrupta representa também um ativo de dados proprietário, com potencial de extensão para novos serviços de bem-estar à base já existente, sem custo adicional de aquisição de clientes. O relatório de avaliação estratégica que acompanha esta seção identifica ainda outras avenidas de crescimento ainda não plenamente exploradas: a ampliação do mix de serviços de estética e terapias para elevar o ticket médio, o espaço de expansão do Emagre Spa - que não atingiu seu teto de crescimento -, e a valorização contínua do próprio ativo imobiliário, reforçada pela reputação consolidada da operação na região ao longo da última década.</p>
+            </div>
+          </div>
+
+          <section class="document-group" aria-labelledby="grupo-carta-demonstrativos">
+            <h4 id="grupo-carta-demonstrativos">DREs - Demonstrativos de Resultado 2025-2027</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">Carta de apresentação dos demonstrativos</span><span class="data-room-file-meta">PDF · 2 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="Carta de apresentação dos demonstrativos do Emagre Spa e Espaço Regenesis" src="assets/data-room/financeiro/carta-apresentacao-demonstrativos.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-dre-regenesis">
+            <h4 id="grupo-dre-regenesis">Espaço Regenesis</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">DRE Espaço Regenesis - 2025</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="DRE do Espaço Regenesis para 2025" src="assets/data-room/financeiro/dre-regenesis-2025.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">DRE Espaço Regenesis - 2026</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="DRE do Espaço Regenesis para 2026" src="assets/data-room/financeiro/dre-regenesis-2026.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">DRE Espaço Regenesis - 2027</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="DRE do Espaço Regenesis para 2027" src="assets/data-room/financeiro/dre-regenesis-2027.pdf"></iframe></div></details>
+            </div>
+          </section>
+
+          <section class="document-group" aria-labelledby="grupo-dre-emagre">
+            <h4 id="grupo-dre-emagre">Emagre Spa</h4>
+            <div class="document-list">
+              <details class="data-room-file"><summary><span class="data-room-file-title">DRE Emagre Spa - 2025</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="DRE do Emagre Spa para 2025" src="assets/data-room/financeiro/dre-emagre-2025.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">DRE Emagre Spa - 2026</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="DRE do Emagre Spa para 2026" src="assets/data-room/financeiro/dre-emagre-2026.pdf"></iframe></div></details>
+              <details class="data-room-file"><summary><span class="data-room-file-title">DRE Emagre Spa - 2027</span><span class="data-room-file-meta">PDF · 3 páginas</span></summary><div class="data-room-file-view"><iframe loading="lazy" title="DRE do Emagre Spa para 2027" src="assets/data-room/financeiro/dre-emagre-2027.pdf"></iframe></div></details>
+            </div>
+          </section>
+        </article>
       </div>
     </section>
 
-    <section class="section section-deep closing">
+    <section class="section section-deep closing" id="sintese">
       <div class="container">
         <div class="eyebrow">Síntese do investimento</div>
         <h2 class="section-title">Um ativo de luxo, duas máquinas de geração de caixa</h2>
@@ -968,6 +1206,41 @@
   </footer>
 
   <script>
+    const chapterDistribution = {
+      imovel: [
+        "#oportunidade",
+        "#juridico",
+        "#tese",
+        "#laudos",
+        "#expansao",
+        "#documentos-imovel"
+      ],
+      historia: [
+        "#localizacao",
+        "#ativo",
+        "#documentos-historia"
+      ],
+      financeiro: [
+        "#negocios",
+        "#operacoes",
+        "#performance",
+        "#crescimento",
+        "#transacao",
+        "#documentos-financeiro",
+        "#sintese",
+        "#proximos-passos"
+      ]
+    };
+
+    Object.entries(chapterDistribution).forEach(([chapter, selectors]) => {
+      const target = document.querySelector(`[data-chapter-target="${chapter}"]`);
+      selectors.forEach(selector => {
+        const content = document.querySelector(selector);
+        if (target && content) target.appendChild(content);
+      });
+    });
+    document.querySelector("#data-room-source")?.remove();
+
     const navLinks = [...document.querySelectorAll(".nav-link, .chapter-link")];
     const sections = [...new Set(navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean))];
     const menuToggle = document.querySelector(".menu-toggle");
