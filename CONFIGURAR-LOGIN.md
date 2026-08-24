@@ -1,32 +1,27 @@
-# Configuração do acesso protegido
+# Configuração do Data Room protegido
 
-O site utiliza uma Cloudflare Pages Function para bloquear todo o conteúdo antes que HTML, imagens, vídeos ou documentos sejam entregues ao navegador.
+A apresentação comercial é pública. O Data Room possui uma credencial principal e os documentos de maior sensibilidade exigem uma segunda senha.
 
-## Variáveis secretas obrigatórias
+## Segredos no Cloudflare
 
-No painel do Cloudflare:
+Em **Workers & Pages > projeto-ubira > Settings > Variables and Secrets**, configure no ambiente de produção:
 
-1. Abra **Workers & Pages**.
-2. Selecione o projeto **projeto-ubira**.
-3. Acesse **Settings > Variables and Secrets**.
-4. Adicione as duas variáveis abaixo no ambiente de **Production** e marque todas como **Encrypt**:
+- `DATA_ROOM_PASSWORD`: senha de entrada do Data Room.
+- `SECONDARY_PASSWORD`: senha diferente, usada nos documentos de proteção adicional.
+- `SESSION_SECRET`: chave aleatória longa, com pelo menos 32 caracteres.
 
-   - `SITE_PASSWORD`: senha forte para acessar o site.
-   - `SESSION_SECRET`: chave aleatória longa, diferente da senha, com pelo menos 32 caracteres.
-
-5. Salve as variáveis.
-6. Faça um novo deploy do projeto para que os segredos sejam carregados.
-
-Enquanto as duas variáveis não estiverem configuradas, o site permanecerá fechado e mostrará a mensagem de configuração. A antiga variável `SITE_USERNAME` não é mais utilizada e pode ser removida do painel.
+Por compatibilidade com a configuração anterior, `SITE_PASSWORD` funciona temporariamente como fallback para as duas senhas. Antes da publicação definitiva, configure senhas distintas e remova esse fallback.
 
 ## Funcionamento
 
-- A sessão autenticada dura 8 horas.
-- O cookie de sessão é assinado, `HttpOnly`, `Secure` e `SameSite=Lax`.
-- O endereço `/logout` encerra a sessão.
-- PDFs, imagens e vídeos também exigem autenticação.
-- Nenhuma senha é armazenada no GitHub ou no navegador.
+- A apresentação pública não solicita senha.
+- A entrada em `data-room.html` solicita a credencial principal.
+- Escrituras, registros, certidões, avaliação mercadológica e demonstrativos financeiros solicitam a segunda senha.
+- As duas autorizações expiram após 8 horas.
+- Cookies são assinados, `HttpOnly`, `Secure` e `SameSite=Lax`.
+- Conteúdo e arquivos do Data Room recebem `noindex`, bloqueio de cache e cabeçalhos de segurança.
+- `/logout` encerra as duas autorizações.
 
-## Troca de senha
+## Limite desta versão
 
-Altere `SITE_PASSWORD` no painel do Cloudflare e faça um novo deploy. Para invalidar imediatamente todas as sessões existentes, altere também `SESSION_SECRET`.
+Esta implementação usa senhas definidas no Cloudflare, sem banco de usuários. Para cumprir integralmente o manual com credenciais individuais, perfis, revogação, auditoria, limite de tentativas, arquivos privados e URLs temporárias, será necessária uma etapa de infraestrutura com armazenamento privado e gestão de identidades.
