@@ -25,3 +25,14 @@ Por compatibilidade com a configuração anterior, `SITE_PASSWORD` funciona temp
 ## Limite desta versão
 
 Esta implementação usa senhas definidas no Cloudflare, sem banco de usuários. Para cumprir integralmente o manual com credenciais individuais, perfis, revogação, auditoria, limite de tentativas, arquivos privados e URLs temporárias, será necessária uma etapa de infraestrutura com armazenamento privado e gestão de identidades.
+
+## Captação de leads e analytics
+
+Configure também no ambiente de produção:
+
+- `LEAD_WEBHOOK_URL`: endpoint HTTPS do CRM, automação ou serviço que receberá os formulários.
+- `LEAD_WEBHOOK_TOKEN` (opcional): token Bearer enviado ao webhook.
+- Binding `ANALYTICS` (opcional): dataset do Cloudflare Analytics Engine para eventos sem dados pessoais.
+- `ANALYTICS_WEBHOOK_URL` (opcional): destino alternativo para eventos de conversão.
+
+O endpoint `/api/lead` valida os campos, aplica honeypot e limite mínimo de tempo, não grava dados no site e retorna sucesso apenas depois que o webhook confirma o recebimento. Nenhum dado livre dos formulários é enviado ao endpoint de analytics.
